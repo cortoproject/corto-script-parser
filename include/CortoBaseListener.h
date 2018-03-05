@@ -25,12 +25,6 @@ public:
   virtual void enterStatement(CortoParser::StatementContext * /*ctx*/) override { }
   virtual void exitStatement(CortoParser::StatementContext * /*ctx*/) override { }
 
-  virtual void enterSimple_statement(CortoParser::Simple_statementContext * /*ctx*/) override { }
-  virtual void exitSimple_statement(CortoParser::Simple_statementContext * /*ctx*/) override { }
-
-  virtual void enterComplex_statement(CortoParser::Complex_statementContext * /*ctx*/) override { }
-  virtual void exitComplex_statement(CortoParser::Complex_statementContext * /*ctx*/) override { }
-
   virtual void enterDeclaration(CortoParser::DeclarationContext * /*ctx*/) override { }
   virtual void exitDeclaration(CortoParser::DeclarationContext * /*ctx*/) override { }
 

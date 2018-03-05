@@ -17,17 +17,8 @@ statements
 
 statement
     : EOL
-    | simple_statement EOL
-    | complex_statement
-    ;
-
-simple_statement
-    : declaration
-    | expression
-    ;
-
-complex_statement
-    : declaration scope
+    | expression EOL
+    | declaration (scope | EOL)
     ;
 
 declaration
@@ -36,6 +27,7 @@ declaration
 
 declaration_identifier
     : object_identifier argument_declaration?
+    | object_identifier (',' object_identifier)+
     | object_expression (',' object_expression)+
     ;
 
@@ -172,7 +164,7 @@ initializer_collection
     ;
 
 initializer_list
-    : initializer_value (','? initializer_value)*
+    : initializer_value (',' initializer_value)*
     ;
 
 initializer_value
@@ -242,7 +234,7 @@ STRING
     ;
 
 EOL
-    : '\n'+ | ';'+
+    : '\n' | ';'
     ;
 
 WS: [ \t\r]+ -> skip;

@@ -12,7 +12,7 @@
 #include <antlr4/cpp/cpp.h>
 
 /* $header() */
-/* Definitions that are required by package headers (native types) go here. */
+#include <corto/parser/CortoBaseListener.h>
 /* $end */
 
 #include <corto/parser/_type.h>

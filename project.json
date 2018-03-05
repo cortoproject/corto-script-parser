@@ -7,6 +7,7 @@
         "version": "1.0.0",
         "language": "c",
         "c4cpp": true,
-        "use": ["antlr4/cpp"]
+        "use": ["antlr4/cpp"],
+        "include": ["${locate include}"]
     }
 }

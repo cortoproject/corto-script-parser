@@ -30,19 +30,18 @@ public:
   };
 
   enum {
-    RuleProgram = 0, RuleStatements = 1, RuleStatement = 2, RuleSimple_statement = 3, 
-    RuleComplex_statement = 4, RuleDeclaration = 5, RuleDeclaration_identifier = 6, 
-    RuleArgument_declaration = 7, RuleArgument = 8, RuleScope = 9, RuleExpression = 10, 
-    RuleAssignment_expression = 11, RuleAssignment_operator = 12, RuleConditional_expression = 13, 
-    RuleLogical_or_expression = 14, RuleLogical_and_expression = 15, RuleOr_expression = 16, 
-    RuleXor_expression = 17, RuleAnd_expression = 18, RuleEquality_expression = 19, 
-    RuleRelational_expression = 20, RuleShift_expression = 21, RuleAdditive_expression = 22, 
-    RuleMultiplicative_expression = 23, RuleCast_expression = 24, RuleUnary_expression = 25, 
-    RuleUnary_operator = 26, RulePostfix_expression = 27, RuleInitializer_assignment = 28, 
-    RuleInitializer_expression = 29, RuleInitializer_composite = 30, RuleInitializer_collection = 31, 
-    RuleInitializer_list = 32, RuleInitializer_value = 33, RuleInitializer_key = 34, 
-    RulePrimary_expression = 35, RuleConstant = 36, RuleObject_expression = 37, 
-    RuleObject_identifier = 38
+    RuleProgram = 0, RuleStatements = 1, RuleStatement = 2, RuleDeclaration = 3, 
+    RuleDeclaration_identifier = 4, RuleArgument_declaration = 5, RuleArgument = 6, 
+    RuleScope = 7, RuleExpression = 8, RuleAssignment_expression = 9, RuleAssignment_operator = 10, 
+    RuleConditional_expression = 11, RuleLogical_or_expression = 12, RuleLogical_and_expression = 13, 
+    RuleOr_expression = 14, RuleXor_expression = 15, RuleAnd_expression = 16, 
+    RuleEquality_expression = 17, RuleRelational_expression = 18, RuleShift_expression = 19, 
+    RuleAdditive_expression = 20, RuleMultiplicative_expression = 21, RuleCast_expression = 22, 
+    RuleUnary_expression = 23, RuleUnary_operator = 24, RulePostfix_expression = 25, 
+    RuleInitializer_assignment = 26, RuleInitializer_expression = 27, RuleInitializer_composite = 28, 
+    RuleInitializer_collection = 29, RuleInitializer_list = 30, RuleInitializer_value = 31, 
+    RuleInitializer_key = 32, RulePrimary_expression = 33, RuleConstant = 34, 
+    RuleObject_expression = 35, RuleObject_identifier = 36
   };
 
   CortoParser(antlr4::TokenStream *input);
@@ -58,8 +57,6 @@ public:
   class ProgramContext;
   class StatementsContext;
   class StatementContext;
-  class Simple_statementContext;
-  class Complex_statementContext;
   class DeclarationContext;
   class Declaration_identifierContext;
   class Argument_declarationContext;
@@ -131,38 +128,7 @@ public:
     StatementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *EOL();
-    Simple_statementContext *simple_statement();
-    Complex_statementContext *complex_statement();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-   
-  };
-
-  StatementContext* statement();
-
-  class  Simple_statementContext : public antlr4::ParserRuleContext {
-  public:
-    Simple_statementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    DeclarationContext *declaration();
     ExpressionContext *expression();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-   
-  };
-
-  Simple_statementContext* simple_statement();
-
-  class  Complex_statementContext : public antlr4::ParserRuleContext {
-  public:
-    Complex_statementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
     DeclarationContext *declaration();
     ScopeContext *scope();
 
@@ -173,7 +139,7 @@ public:
    
   };
 
-  Complex_statementContext* complex_statement();
+  StatementContext* statement();
 
   class  DeclarationContext : public antlr4::ParserRuleContext {
   public:
@@ -196,7 +162,8 @@ public:
   public:
     Declaration_identifierContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    Object_identifierContext *object_identifier();
+    std::vector<Object_identifierContext *> object_identifier();
+    Object_identifierContext* object_identifier(size_t i);
     Argument_declarationContext *argument_declaration();
     std::vector<Object_expressionContext *> object_expression();
     Object_expressionContext* object_expression(size_t i);

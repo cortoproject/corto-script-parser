@@ -23,12 +23,6 @@ public:
   virtual void enterStatement(CortoParser::StatementContext *ctx) = 0;
   virtual void exitStatement(CortoParser::StatementContext *ctx) = 0;
 
-  virtual void enterSimple_statement(CortoParser::Simple_statementContext *ctx) = 0;
-  virtual void exitSimple_statement(CortoParser::Simple_statementContext *ctx) = 0;
-
-  virtual void enterComplex_statement(CortoParser::Complex_statementContext *ctx) = 0;
-  virtual void exitComplex_statement(CortoParser::Complex_statementContext *ctx) = 0;
-
   virtual void enterDeclaration(CortoParser::DeclarationContext *ctx) = 0;
   virtual void exitDeclaration(CortoParser::DeclarationContext *ctx) = 0;
 

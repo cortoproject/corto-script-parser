@@ -27,14 +27,6 @@ public:
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitSimple_statement(CortoParser::Simple_statementContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual antlrcpp::Any visitComplex_statement(CortoParser::Complex_statementContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
   virtual antlrcpp::Any visitDeclaration(CortoParser::DeclarationContext *ctx) override {
     return visitChildren(ctx);
   }
