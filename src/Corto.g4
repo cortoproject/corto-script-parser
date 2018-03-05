@@ -41,6 +41,7 @@ declaration_identifier
 
 argument_declaration
     : '(' argument (',' argument)* ')'
+    | '(' ')'
     ;
 
 argument
@@ -185,7 +186,8 @@ initializer_value
     ;
 
 initializer_key
-    : constant
+    : IDENTIFIER ('.' IDENTIFIER)*
+    | constant
     | object_identifier
     ;
 
@@ -208,7 +210,8 @@ object_expression
     ;
 
 object_identifier
-    : IDENTIFIER ('/' IDENTIFIER)*
+    : 'root/'
+    | '/'? IDENTIFIER ('/' IDENTIFIER)*
     ;
 
 BOOLEAN

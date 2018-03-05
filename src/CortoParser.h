@@ -24,9 +24,9 @@ public:
     T__20 = 21, T__21 = 22, T__22 = 23, T__23 = 24, T__24 = 25, T__25 = 26, 
     T__26 = 27, T__27 = 28, T__28 = 29, T__29 = 30, T__30 = 31, T__31 = 32, 
     T__32 = 33, T__33 = 34, T__34 = 35, T__35 = 36, T__36 = 37, T__37 = 38, 
-    T__38 = 39, T__39 = 40, T__40 = 41, T__41 = 42, T__42 = 43, BOOLEAN = 44, 
-    IDENTIFIER = 45, INTEGER = 46, SIGNED_INTEGER = 47, FLOATING_POINT = 48, 
-    HEXADECIMAL = 49, CHARACTER = 50, STRING = 51, EOL = 52, WS = 53
+    T__38 = 39, T__39 = 40, T__40 = 41, T__41 = 42, T__42 = 43, T__43 = 44, 
+    BOOLEAN = 45, IDENTIFIER = 46, INTEGER = 47, SIGNED_INTEGER = 48, FLOATING_POINT = 49, 
+    HEXADECIMAL = 50, CHARACTER = 51, STRING = 52, EOL = 53, WS = 54
   };
 
   enum {
@@ -666,6 +666,8 @@ public:
   public:
     Initializer_keyContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    std::vector<antlr4::tree::TerminalNode *> IDENTIFIER();
+    antlr4::tree::TerminalNode* IDENTIFIER(size_t i);
     ConstantContext *constant();
     Object_identifierContext *object_identifier();
 
