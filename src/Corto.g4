@@ -153,11 +153,6 @@ postfix_expression
     | postfix_expression '--'
     ;
 
-argument_expression_list
-    : assignment_expression
-    | argument_expression_list ',' assignment_expression
-    ;
-
 initializer_assignment
     : initializer_expression
     | ':' initializer_list

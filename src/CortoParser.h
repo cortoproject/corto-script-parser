@@ -38,11 +38,11 @@ public:
     RuleXor_expression = 17, RuleAnd_expression = 18, RuleEquality_expression = 19, 
     RuleRelational_expression = 20, RuleShift_expression = 21, RuleAdditive_expression = 22, 
     RuleMultiplicative_expression = 23, RuleCast_expression = 24, RuleUnary_expression = 25, 
-    RuleUnary_operator = 26, RulePostfix_expression = 27, RuleArgument_expression_list = 28, 
-    RuleInitializer_assignment = 29, RuleInitializer_expression = 30, RuleInitializer_composite = 31, 
-    RuleInitializer_collection = 32, RuleInitializer_list = 33, RuleInitializer_value = 34, 
-    RuleInitializer_key = 35, RulePrimary_expression = 36, RuleConstant = 37, 
-    RuleObject_expression = 38, RuleObject_identifier = 39
+    RuleUnary_operator = 26, RulePostfix_expression = 27, RuleInitializer_assignment = 28, 
+    RuleInitializer_expression = 29, RuleInitializer_composite = 30, RuleInitializer_collection = 31, 
+    RuleInitializer_list = 32, RuleInitializer_value = 33, RuleInitializer_key = 34, 
+    RulePrimary_expression = 35, RuleConstant = 36, RuleObject_expression = 37, 
+    RuleObject_identifier = 38
   };
 
   CortoParser(antlr4::TokenStream *input);
@@ -83,7 +83,6 @@ public:
   class Unary_expressionContext;
   class Unary_operatorContext;
   class Postfix_expressionContext;
-  class Argument_expression_listContext;
   class Initializer_assignmentContext;
   class Initializer_expressionContext;
   class Initializer_compositeContext;
@@ -551,22 +550,6 @@ public:
 
   Postfix_expressionContext* postfix_expression();
   Postfix_expressionContext* postfix_expression(int precedence);
-  class  Argument_expression_listContext : public antlr4::ParserRuleContext {
-  public:
-    Argument_expression_listContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    Assignment_expressionContext *assignment_expression();
-    Argument_expression_listContext *argument_expression_list();
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-   
-  };
-
-  Argument_expression_listContext* argument_expression_list();
-  Argument_expression_listContext* argument_expression_list(int precedence);
   class  Initializer_assignmentContext : public antlr4::ParserRuleContext {
   public:
     Initializer_assignmentContext(antlr4::ParserRuleContext *parent, size_t invokingState);
@@ -762,7 +745,6 @@ public:
   bool additive_expressionSempred(Additive_expressionContext *_localctx, size_t predicateIndex);
   bool multiplicative_expressionSempred(Multiplicative_expressionContext *_localctx, size_t predicateIndex);
   bool postfix_expressionSempred(Postfix_expressionContext *_localctx, size_t predicateIndex);
-  bool argument_expression_listSempred(Argument_expression_listContext *_localctx, size_t predicateIndex);
 
 private:
   static std::vector<antlr4::dfa::DFA> _decisionToDFA;

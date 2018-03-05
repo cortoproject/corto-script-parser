@@ -75,8 +75,6 @@ public:
 
     virtual antlrcpp::Any visitPostfix_expression(CortoParser::Postfix_expressionContext *context) = 0;
 
-    virtual antlrcpp::Any visitArgument_expression_list(CortoParser::Argument_expression_listContext *context) = 0;
-
     virtual antlrcpp::Any visitInitializer_assignment(CortoParser::Initializer_assignmentContext *context) = 0;
 
     virtual antlrcpp::Any visitInitializer_expression(CortoParser::Initializer_expressionContext *context) = 0;

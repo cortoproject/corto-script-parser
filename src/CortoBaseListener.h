@@ -100,9 +100,6 @@ public:
   virtual void enterPostfix_expression(CortoParser::Postfix_expressionContext * /*ctx*/) override { }
   virtual void exitPostfix_expression(CortoParser::Postfix_expressionContext * /*ctx*/) override { }
 
-  virtual void enterArgument_expression_list(CortoParser::Argument_expression_listContext * /*ctx*/) override { }
-  virtual void exitArgument_expression_list(CortoParser::Argument_expression_listContext * /*ctx*/) override { }
-
   virtual void enterInitializer_assignment(CortoParser::Initializer_assignmentContext * /*ctx*/) override { }
   virtual void exitInitializer_assignment(CortoParser::Initializer_assignmentContext * /*ctx*/) override { }
 

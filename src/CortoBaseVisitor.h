@@ -127,10 +127,6 @@ public:
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitArgument_expression_list(CortoParser::Argument_expression_listContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
   virtual antlrcpp::Any visitInitializer_assignment(CortoParser::Initializer_assignmentContext *ctx) override {
     return visitChildren(ctx);
   }

@@ -98,9 +98,6 @@ public:
   virtual void enterPostfix_expression(CortoParser::Postfix_expressionContext *ctx) = 0;
   virtual void exitPostfix_expression(CortoParser::Postfix_expressionContext *ctx) = 0;
 
-  virtual void enterArgument_expression_list(CortoParser::Argument_expression_listContext *ctx) = 0;
-  virtual void exitArgument_expression_list(CortoParser::Argument_expression_listContext *ctx) = 0;
-
   virtual void enterInitializer_assignment(CortoParser::Initializer_assignmentContext *ctx) = 0;
   virtual void exitInitializer_assignment(CortoParser::Initializer_assignmentContext *ctx) = 0;
 
