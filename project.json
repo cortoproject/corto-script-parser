@@ -1,5 +1,5 @@
 {
-    "id": "corto/parser",
+    "id": "corto/script/parser",
     "type": "package",
     "value": {
         "description": "Making the world a better place",
@@ -7,7 +7,8 @@
         "version": "1.0.0",
         "language": "c",
         "c4cpp": true,
-        "use": ["antlr4/cpp"],
+        "managed": false,
+        "use": ["antlr4/cpp", "corto"],
         "include": ["${locate include}"]
     }
 }

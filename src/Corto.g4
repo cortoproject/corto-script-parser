@@ -18,11 +18,11 @@ statements
 statement
     : EOL
     | expression EOL
-    | declaration (scope | EOL)
+    | declaration
     ;
 
 declaration
-    : object_expression? declaration_identifier initializer_assignment?
+    : object_expression? declaration_identifier initializer_assignment? (scope | EOL)
     ;
 
 declaration_identifier
@@ -168,8 +168,8 @@ initializer_list
     ;
 
 initializer_value
-    : expression
-    | initializer_key initializer_assignment
+    : initializer_key (initializer_expression | ':' expression)
+    | expression
     ;
 
 initializer_key

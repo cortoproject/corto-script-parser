@@ -130,7 +130,6 @@ public:
     antlr4::tree::TerminalNode *EOL();
     ExpressionContext *expression();
     DeclarationContext *declaration();
-    ScopeContext *scope();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -146,6 +145,8 @@ public:
     DeclarationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     Declaration_identifierContext *declaration_identifier();
+    ScopeContext *scope();
+    antlr4::tree::TerminalNode *EOL();
     Object_expressionContext *object_expression();
     Initializer_assignmentContext *initializer_assignment();
 
@@ -599,9 +600,9 @@ public:
   public:
     Initializer_valueContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    ExpressionContext *expression();
     Initializer_keyContext *initializer_key();
-    Initializer_assignmentContext *initializer_assignment();
+    Initializer_expressionContext *initializer_expression();
+    ExpressionContext *expression();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;

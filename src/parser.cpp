@@ -15,12 +15,9 @@ int cortomain(int argc, char *argv[]) {
     if (argc > 1) {
         try {
             ANTLRFileStream input(argv[1]);
-
             CortoLexer lexer(&input);
             CommonTokenStream tokens(&lexer);
-
             tokens.fill();
-
             CortoParser parser(&tokens);
 
             tree::ParseTree* tree = parser.program();

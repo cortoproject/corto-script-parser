@@ -3,27 +3,18 @@
  * Only modify inside the header-end and body-end sections.
  */
 
-#ifndef CORTO_PARSER_H
-#define CORTO_PARSER_H
+#ifndef CORTO_SCRIPT_PARSER_H
+#define CORTO_SCRIPT_PARSER_H
 
 #include <corto/corto.h>
-#include <corto/parser/_project.h>
 #include <corto/c/c.h>
 #include <antlr4/cpp/cpp.h>
 
-/* $header() */
-#include <corto/parser/CortoBaseListener.h>
-/* $end */
-
-#include <corto/parser/_type.h>
-#include <corto/parser/_interface.h>
-#include <corto/parser/_load.h>
-#include <corto/parser/_binding.h>
-#include <corto/parser/c/_api.h>
-
-/* $body() */
-/* Definitions here that need your package headers go here. */
-/* $end */
+#include <corto/script/parser/CortoLexer.h>
+#include <corto/script/parser/CortoParser.h>
+#include <corto/script/parser/CortoListener.h>
+#include <corto/script/parser/CortoBaseListener.h>
+#include <corto/script/parser/CortoVisitor.h>
+#include <corto/script/parser/CortoBaseVisitor.h>
 
 #endif
-
