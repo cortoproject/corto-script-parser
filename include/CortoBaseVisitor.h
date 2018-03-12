@@ -87,7 +87,15 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual antlrcpp::Any visitEquality_operator(CortoParser::Equality_operatorContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual antlrcpp::Any visitRelational_expression(CortoParser::Relational_expressionContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitRelational_operator(CortoParser::Relational_operatorContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -95,11 +103,23 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual antlrcpp::Any visitShift_operator(CortoParser::Shift_operatorContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual antlrcpp::Any visitAdditive_expression(CortoParser::Additive_expressionContext *ctx) override {
     return visitChildren(ctx);
   }
 
+  virtual antlrcpp::Any visitAdditive_operator(CortoParser::Additive_operatorContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual antlrcpp::Any visitMultiplicative_expression(CortoParser::Multiplicative_expressionContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitMultiplicative_operator(CortoParser::Multiplicative_operatorContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -116,6 +136,10 @@ public:
   }
 
   virtual antlrcpp::Any visitPostfix_expression(CortoParser::Postfix_expressionContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitInc_operator(CortoParser::Inc_operatorContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -151,7 +175,7 @@ public:
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitConstant(CortoParser::ConstantContext *ctx) override {
+  virtual antlrcpp::Any visitLiteral(CortoParser::LiteralContext *ctx) override {
     return visitChildren(ctx);
   }
 

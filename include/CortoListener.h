@@ -68,17 +68,32 @@ public:
   virtual void enterEquality_expression(CortoParser::Equality_expressionContext *ctx) = 0;
   virtual void exitEquality_expression(CortoParser::Equality_expressionContext *ctx) = 0;
 
+  virtual void enterEquality_operator(CortoParser::Equality_operatorContext *ctx) = 0;
+  virtual void exitEquality_operator(CortoParser::Equality_operatorContext *ctx) = 0;
+
   virtual void enterRelational_expression(CortoParser::Relational_expressionContext *ctx) = 0;
   virtual void exitRelational_expression(CortoParser::Relational_expressionContext *ctx) = 0;
+
+  virtual void enterRelational_operator(CortoParser::Relational_operatorContext *ctx) = 0;
+  virtual void exitRelational_operator(CortoParser::Relational_operatorContext *ctx) = 0;
 
   virtual void enterShift_expression(CortoParser::Shift_expressionContext *ctx) = 0;
   virtual void exitShift_expression(CortoParser::Shift_expressionContext *ctx) = 0;
 
+  virtual void enterShift_operator(CortoParser::Shift_operatorContext *ctx) = 0;
+  virtual void exitShift_operator(CortoParser::Shift_operatorContext *ctx) = 0;
+
   virtual void enterAdditive_expression(CortoParser::Additive_expressionContext *ctx) = 0;
   virtual void exitAdditive_expression(CortoParser::Additive_expressionContext *ctx) = 0;
 
+  virtual void enterAdditive_operator(CortoParser::Additive_operatorContext *ctx) = 0;
+  virtual void exitAdditive_operator(CortoParser::Additive_operatorContext *ctx) = 0;
+
   virtual void enterMultiplicative_expression(CortoParser::Multiplicative_expressionContext *ctx) = 0;
   virtual void exitMultiplicative_expression(CortoParser::Multiplicative_expressionContext *ctx) = 0;
+
+  virtual void enterMultiplicative_operator(CortoParser::Multiplicative_operatorContext *ctx) = 0;
+  virtual void exitMultiplicative_operator(CortoParser::Multiplicative_operatorContext *ctx) = 0;
 
   virtual void enterCast_expression(CortoParser::Cast_expressionContext *ctx) = 0;
   virtual void exitCast_expression(CortoParser::Cast_expressionContext *ctx) = 0;
@@ -91,6 +106,9 @@ public:
 
   virtual void enterPostfix_expression(CortoParser::Postfix_expressionContext *ctx) = 0;
   virtual void exitPostfix_expression(CortoParser::Postfix_expressionContext *ctx) = 0;
+
+  virtual void enterInc_operator(CortoParser::Inc_operatorContext *ctx) = 0;
+  virtual void exitInc_operator(CortoParser::Inc_operatorContext *ctx) = 0;
 
   virtual void enterInitializer_assignment(CortoParser::Initializer_assignmentContext *ctx) = 0;
   virtual void exitInitializer_assignment(CortoParser::Initializer_assignmentContext *ctx) = 0;
@@ -116,8 +134,8 @@ public:
   virtual void enterPrimary_expression(CortoParser::Primary_expressionContext *ctx) = 0;
   virtual void exitPrimary_expression(CortoParser::Primary_expressionContext *ctx) = 0;
 
-  virtual void enterConstant(CortoParser::ConstantContext *ctx) = 0;
-  virtual void exitConstant(CortoParser::ConstantContext *ctx) = 0;
+  virtual void enterLiteral(CortoParser::LiteralContext *ctx) = 0;
+  virtual void exitLiteral(CortoParser::LiteralContext *ctx) = 0;
 
   virtual void enterObject_expression(CortoParser::Object_expressionContext *ctx) = 0;
   virtual void exitObject_expression(CortoParser::Object_expressionContext *ctx) = 0;

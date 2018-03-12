@@ -18,14 +18,18 @@ public:
     T__20 = 21, T__21 = 22, T__22 = 23, T__23 = 24, T__24 = 25, T__25 = 26, 
     T__26 = 27, T__27 = 28, T__28 = 29, T__29 = 30, T__30 = 31, T__31 = 32, 
     T__32 = 33, T__33 = 34, T__34 = 35, T__35 = 36, T__36 = 37, T__37 = 38, 
-    T__38 = 39, T__39 = 40, T__40 = 41, T__41 = 42, T__42 = 43, T__43 = 44, 
-    BOOLEAN = 45, IDENTIFIER = 46, MEASUREMENT = 47, NUMERICAL = 48, INTEGER = 49, 
-    SIGNED_INTEGER = 50, FLOATING_POINT = 51, HEXADECIMAL = 52, CHARACTER = 53, 
-    STRING = 54, EOL = 55, WS = 56
+    T__38 = 39, T__39 = 40, BOOLEAN = 41, IDENTIFIER = 42, HEXADECIMAL = 43, 
+    SIGNED_INTEGER_MEASUREMENT = 44, INTEGER_MEASUREMENT = 45, FLOATING_POINT_MEASUREMENT = 46, 
+    INTEGER = 47, SIGNED_INTEGER = 48, FLOATING_POINT = 49, STRING = 50, 
+    LPAREN = 51, RPAREN = 52, LBRACK = 53, RBRACK = 54, IGNORE_NEWLINE = 55, 
+    EOL = 56, WS = 57
   };
 
   CortoLexer(antlr4::CharStream *input);
   ~CortoLexer();
+
+
+      int nesting = 0;
 
   virtual std::string getGrammarFileName() const override;
   virtual const std::vector<std::string>& getRuleNames() const override;
@@ -37,6 +41,9 @@ public:
 
   virtual const std::vector<uint16_t> getSerializedATN() const override;
   virtual const antlr4::atn::ATN& getATN() const override;
+
+  virtual void action(antlr4::RuleContext *context, size_t ruleIndex, size_t actionIndex) override;
+  virtual bool sempred(antlr4::RuleContext *_localctx, size_t ruleIndex, size_t predicateIndex) override;
 
 private:
   static std::vector<antlr4::dfa::DFA> _decisionToDFA;
@@ -54,8 +61,13 @@ private:
 
 
   // Individual action functions triggered by action() above.
+  void LPARENAction(antlr4::RuleContext *context, size_t actionIndex);
+  void RPARENAction(antlr4::RuleContext *context, size_t actionIndex);
+  void LBRACKAction(antlr4::RuleContext *context, size_t actionIndex);
+  void RBRACKAction(antlr4::RuleContext *context, size_t actionIndex);
 
   // Individual semantic predicate functions triggered by sempred() above.
+  bool IGNORE_NEWLINESempred(antlr4::RuleContext *_localctx, size_t predicateIndex);
 
   struct Initializer {
     Initializer();

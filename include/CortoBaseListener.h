@@ -70,17 +70,32 @@ public:
   virtual void enterEquality_expression(CortoParser::Equality_expressionContext * /*ctx*/) override { }
   virtual void exitEquality_expression(CortoParser::Equality_expressionContext * /*ctx*/) override { }
 
+  virtual void enterEquality_operator(CortoParser::Equality_operatorContext * /*ctx*/) override { }
+  virtual void exitEquality_operator(CortoParser::Equality_operatorContext * /*ctx*/) override { }
+
   virtual void enterRelational_expression(CortoParser::Relational_expressionContext * /*ctx*/) override { }
   virtual void exitRelational_expression(CortoParser::Relational_expressionContext * /*ctx*/) override { }
+
+  virtual void enterRelational_operator(CortoParser::Relational_operatorContext * /*ctx*/) override { }
+  virtual void exitRelational_operator(CortoParser::Relational_operatorContext * /*ctx*/) override { }
 
   virtual void enterShift_expression(CortoParser::Shift_expressionContext * /*ctx*/) override { }
   virtual void exitShift_expression(CortoParser::Shift_expressionContext * /*ctx*/) override { }
 
+  virtual void enterShift_operator(CortoParser::Shift_operatorContext * /*ctx*/) override { }
+  virtual void exitShift_operator(CortoParser::Shift_operatorContext * /*ctx*/) override { }
+
   virtual void enterAdditive_expression(CortoParser::Additive_expressionContext * /*ctx*/) override { }
   virtual void exitAdditive_expression(CortoParser::Additive_expressionContext * /*ctx*/) override { }
 
+  virtual void enterAdditive_operator(CortoParser::Additive_operatorContext * /*ctx*/) override { }
+  virtual void exitAdditive_operator(CortoParser::Additive_operatorContext * /*ctx*/) override { }
+
   virtual void enterMultiplicative_expression(CortoParser::Multiplicative_expressionContext * /*ctx*/) override { }
   virtual void exitMultiplicative_expression(CortoParser::Multiplicative_expressionContext * /*ctx*/) override { }
+
+  virtual void enterMultiplicative_operator(CortoParser::Multiplicative_operatorContext * /*ctx*/) override { }
+  virtual void exitMultiplicative_operator(CortoParser::Multiplicative_operatorContext * /*ctx*/) override { }
 
   virtual void enterCast_expression(CortoParser::Cast_expressionContext * /*ctx*/) override { }
   virtual void exitCast_expression(CortoParser::Cast_expressionContext * /*ctx*/) override { }
@@ -93,6 +108,9 @@ public:
 
   virtual void enterPostfix_expression(CortoParser::Postfix_expressionContext * /*ctx*/) override { }
   virtual void exitPostfix_expression(CortoParser::Postfix_expressionContext * /*ctx*/) override { }
+
+  virtual void enterInc_operator(CortoParser::Inc_operatorContext * /*ctx*/) override { }
+  virtual void exitInc_operator(CortoParser::Inc_operatorContext * /*ctx*/) override { }
 
   virtual void enterInitializer_assignment(CortoParser::Initializer_assignmentContext * /*ctx*/) override { }
   virtual void exitInitializer_assignment(CortoParser::Initializer_assignmentContext * /*ctx*/) override { }
@@ -118,8 +136,8 @@ public:
   virtual void enterPrimary_expression(CortoParser::Primary_expressionContext * /*ctx*/) override { }
   virtual void exitPrimary_expression(CortoParser::Primary_expressionContext * /*ctx*/) override { }
 
-  virtual void enterConstant(CortoParser::ConstantContext * /*ctx*/) override { }
-  virtual void exitConstant(CortoParser::ConstantContext * /*ctx*/) override { }
+  virtual void enterLiteral(CortoParser::LiteralContext * /*ctx*/) override { }
+  virtual void exitLiteral(CortoParser::LiteralContext * /*ctx*/) override { }
 
   virtual void enterObject_expression(CortoParser::Object_expressionContext * /*ctx*/) override { }
   virtual void exitObject_expression(CortoParser::Object_expressionContext * /*ctx*/) override { }

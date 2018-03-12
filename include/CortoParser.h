@@ -24,10 +24,11 @@ public:
     T__20 = 21, T__21 = 22, T__22 = 23, T__23 = 24, T__24 = 25, T__25 = 26, 
     T__26 = 27, T__27 = 28, T__28 = 29, T__29 = 30, T__30 = 31, T__31 = 32, 
     T__32 = 33, T__33 = 34, T__34 = 35, T__35 = 36, T__36 = 37, T__37 = 38, 
-    T__38 = 39, T__39 = 40, T__40 = 41, T__41 = 42, T__42 = 43, T__43 = 44, 
-    BOOLEAN = 45, IDENTIFIER = 46, MEASUREMENT = 47, NUMERICAL = 48, INTEGER = 49, 
-    SIGNED_INTEGER = 50, FLOATING_POINT = 51, HEXADECIMAL = 52, CHARACTER = 53, 
-    STRING = 54, EOL = 55, WS = 56
+    T__38 = 39, T__39 = 40, BOOLEAN = 41, IDENTIFIER = 42, HEXADECIMAL = 43, 
+    SIGNED_INTEGER_MEASUREMENT = 44, INTEGER_MEASUREMENT = 45, FLOATING_POINT_MEASUREMENT = 46, 
+    INTEGER = 47, SIGNED_INTEGER = 48, FLOATING_POINT = 49, STRING = 50, 
+    LPAREN = 51, RPAREN = 52, LBRACK = 53, RBRACK = 54, IGNORE_NEWLINE = 55, 
+    EOL = 56, WS = 57
   };
 
   enum {
@@ -36,13 +37,15 @@ public:
     RuleScope = 7, RuleExpression = 8, RuleAssignment_expression = 9, RuleAssignment_operator = 10, 
     RuleConditional_expression = 11, RuleLogical_or_expression = 12, RuleLogical_and_expression = 13, 
     RuleOr_expression = 14, RuleXor_expression = 15, RuleAnd_expression = 16, 
-    RuleEquality_expression = 17, RuleRelational_expression = 18, RuleShift_expression = 19, 
-    RuleAdditive_expression = 20, RuleMultiplicative_expression = 21, RuleCast_expression = 22, 
-    RuleUnary_expression = 23, RuleUnary_operator = 24, RulePostfix_expression = 25, 
-    RuleInitializer_assignment = 26, RuleInitializer_expression = 27, RuleInitializer_composite = 28, 
-    RuleInitializer_collection = 29, RuleInitializer_list = 30, RuleInitializer_value = 31, 
-    RuleInitializer_key = 32, RulePrimary_expression = 33, RuleConstant = 34, 
-    RuleObject_expression = 35, RuleObject_identifier = 36
+    RuleEquality_expression = 17, RuleEquality_operator = 18, RuleRelational_expression = 19, 
+    RuleRelational_operator = 20, RuleShift_expression = 21, RuleShift_operator = 22, 
+    RuleAdditive_expression = 23, RuleAdditive_operator = 24, RuleMultiplicative_expression = 25, 
+    RuleMultiplicative_operator = 26, RuleCast_expression = 27, RuleUnary_expression = 28, 
+    RuleUnary_operator = 29, RulePostfix_expression = 30, RuleInc_operator = 31, 
+    RuleInitializer_assignment = 32, RuleInitializer_expression = 33, RuleInitializer_composite = 34, 
+    RuleInitializer_collection = 35, RuleInitializer_list = 36, RuleInitializer_value = 37, 
+    RuleInitializer_key = 38, RulePrimary_expression = 39, RuleLiteral = 40, 
+    RuleObject_expression = 41, RuleObject_identifier = 42
   };
 
   CortoParser(antlr4::TokenStream *input);
@@ -73,14 +76,20 @@ public:
   class Xor_expressionContext;
   class And_expressionContext;
   class Equality_expressionContext;
+  class Equality_operatorContext;
   class Relational_expressionContext;
+  class Relational_operatorContext;
   class Shift_expressionContext;
+  class Shift_operatorContext;
   class Additive_expressionContext;
+  class Additive_operatorContext;
   class Multiplicative_expressionContext;
+  class Multiplicative_operatorContext;
   class Cast_expressionContext;
   class Unary_expressionContext;
   class Unary_operatorContext;
   class Postfix_expressionContext;
+  class Inc_operatorContext;
   class Initializer_assignmentContext;
   class Initializer_expressionContext;
   class Initializer_compositeContext;
@@ -89,7 +98,7 @@ public:
   class Initializer_valueContext;
   class Initializer_keyContext;
   class Primary_expressionContext;
-  class ConstantContext;
+  class LiteralContext;
   class Object_expressionContext;
   class Object_identifierContext; 
 
@@ -231,7 +240,9 @@ public:
     ExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     Assignment_expressionContext *assignment_expression();
+    antlr4::tree::TerminalNode *LPAREN();
     ExpressionContext *expression();
+    antlr4::tree::TerminalNode *RPAREN();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -377,6 +388,7 @@ public:
     virtual size_t getRuleIndex() const override;
     Relational_expressionContext *relational_expression();
     Equality_expressionContext *equality_expression();
+    Equality_operatorContext *equality_operator();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -387,12 +399,27 @@ public:
 
   Equality_expressionContext* equality_expression();
   Equality_expressionContext* equality_expression(int precedence);
+  class  Equality_operatorContext : public antlr4::ParserRuleContext {
+  public:
+    Equality_operatorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
+  };
+
+  Equality_operatorContext* equality_operator();
+
   class  Relational_expressionContext : public antlr4::ParserRuleContext {
   public:
     Relational_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     Shift_expressionContext *shift_expression();
     Relational_expressionContext *relational_expression();
+    Relational_operatorContext *relational_operator();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -403,12 +430,27 @@ public:
 
   Relational_expressionContext* relational_expression();
   Relational_expressionContext* relational_expression(int precedence);
+  class  Relational_operatorContext : public antlr4::ParserRuleContext {
+  public:
+    Relational_operatorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
+  };
+
+  Relational_operatorContext* relational_operator();
+
   class  Shift_expressionContext : public antlr4::ParserRuleContext {
   public:
     Shift_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     Additive_expressionContext *additive_expression();
     Shift_expressionContext *shift_expression();
+    Shift_operatorContext *shift_operator();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -419,12 +461,27 @@ public:
 
   Shift_expressionContext* shift_expression();
   Shift_expressionContext* shift_expression(int precedence);
+  class  Shift_operatorContext : public antlr4::ParserRuleContext {
+  public:
+    Shift_operatorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
+  };
+
+  Shift_operatorContext* shift_operator();
+
   class  Additive_expressionContext : public antlr4::ParserRuleContext {
   public:
     Additive_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     Multiplicative_expressionContext *multiplicative_expression();
     Additive_expressionContext *additive_expression();
+    Additive_operatorContext *additive_operator();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -435,12 +492,27 @@ public:
 
   Additive_expressionContext* additive_expression();
   Additive_expressionContext* additive_expression(int precedence);
+  class  Additive_operatorContext : public antlr4::ParserRuleContext {
+  public:
+    Additive_operatorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
+  };
+
+  Additive_operatorContext* additive_operator();
+
   class  Multiplicative_expressionContext : public antlr4::ParserRuleContext {
   public:
     Multiplicative_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     Cast_expressionContext *cast_expression();
     Multiplicative_expressionContext *multiplicative_expression();
+    Multiplicative_operatorContext *multiplicative_operator();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -451,6 +523,20 @@ public:
 
   Multiplicative_expressionContext* multiplicative_expression();
   Multiplicative_expressionContext* multiplicative_expression(int precedence);
+  class  Multiplicative_operatorContext : public antlr4::ParserRuleContext {
+  public:
+    Multiplicative_operatorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
+  };
+
+  Multiplicative_operatorContext* multiplicative_operator();
+
   class  Cast_expressionContext : public antlr4::ParserRuleContext {
   public:
     Cast_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
@@ -473,6 +559,7 @@ public:
     Unary_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     Postfix_expressionContext *postfix_expression();
+    Inc_operatorContext *inc_operator();
     Unary_expressionContext *unary_expression();
     Unary_operatorContext *unary_operator();
     Cast_expressionContext *cast_expression();
@@ -509,6 +596,7 @@ public:
     ExpressionContext *expression();
     Initializer_compositeContext *initializer_composite();
     antlr4::tree::TerminalNode *IDENTIFIER();
+    Inc_operatorContext *inc_operator();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -519,6 +607,20 @@ public:
 
   Postfix_expressionContext* postfix_expression();
   Postfix_expressionContext* postfix_expression(int precedence);
+  class  Inc_operatorContext : public antlr4::ParserRuleContext {
+  public:
+    Inc_operatorContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
+  };
+
+  Inc_operatorContext* inc_operator();
+
   class  Initializer_assignmentContext : public antlr4::ParserRuleContext {
   public:
     Initializer_assignmentContext(antlr4::ParserRuleContext *parent, size_t invokingState);
@@ -555,6 +657,8 @@ public:
   public:
     Initializer_compositeContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *LPAREN();
+    antlr4::tree::TerminalNode *RPAREN();
     Initializer_listContext *initializer_list();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -570,6 +674,8 @@ public:
   public:
     Initializer_collectionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *LBRACK();
+    antlr4::tree::TerminalNode *RBRACK();
     Initializer_listContext *initializer_list();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -620,7 +726,7 @@ public:
     virtual size_t getRuleIndex() const override;
     std::vector<antlr4::tree::TerminalNode *> IDENTIFIER();
     antlr4::tree::TerminalNode* IDENTIFIER(size_t i);
-    ConstantContext *constant();
+    LiteralContext *literal();
     Object_identifierContext *object_identifier();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -636,7 +742,7 @@ public:
   public:
     Primary_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    ConstantContext *constant();
+    LiteralContext *literal();
     Object_expressionContext *object_expression();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -648,15 +754,18 @@ public:
 
   Primary_expressionContext* primary_expression();
 
-  class  ConstantContext : public antlr4::ParserRuleContext {
+  class  LiteralContext : public antlr4::ParserRuleContext {
   public:
-    ConstantContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    LiteralContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *BOOLEAN();
-    antlr4::tree::TerminalNode *MEASUREMENT();
-    antlr4::tree::TerminalNode *NUMERICAL();
     antlr4::tree::TerminalNode *HEXADECIMAL();
-    antlr4::tree::TerminalNode *CHARACTER();
+    antlr4::tree::TerminalNode *SIGNED_INTEGER_MEASUREMENT();
+    antlr4::tree::TerminalNode *INTEGER_MEASUREMENT();
+    antlr4::tree::TerminalNode *FLOATING_POINT_MEASUREMENT();
+    antlr4::tree::TerminalNode *SIGNED_INTEGER();
+    antlr4::tree::TerminalNode *FLOATING_POINT();
+    antlr4::tree::TerminalNode *INTEGER();
     antlr4::tree::TerminalNode *STRING();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -666,7 +775,7 @@ public:
    
   };
 
-  ConstantContext* constant();
+  LiteralContext* literal();
 
   class  Object_expressionContext : public antlr4::ParserRuleContext {
   public:

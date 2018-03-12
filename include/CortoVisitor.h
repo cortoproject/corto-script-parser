@@ -55,13 +55,23 @@ public:
 
     virtual antlrcpp::Any visitEquality_expression(CortoParser::Equality_expressionContext *context) = 0;
 
+    virtual antlrcpp::Any visitEquality_operator(CortoParser::Equality_operatorContext *context) = 0;
+
     virtual antlrcpp::Any visitRelational_expression(CortoParser::Relational_expressionContext *context) = 0;
+
+    virtual antlrcpp::Any visitRelational_operator(CortoParser::Relational_operatorContext *context) = 0;
 
     virtual antlrcpp::Any visitShift_expression(CortoParser::Shift_expressionContext *context) = 0;
 
+    virtual antlrcpp::Any visitShift_operator(CortoParser::Shift_operatorContext *context) = 0;
+
     virtual antlrcpp::Any visitAdditive_expression(CortoParser::Additive_expressionContext *context) = 0;
 
+    virtual antlrcpp::Any visitAdditive_operator(CortoParser::Additive_operatorContext *context) = 0;
+
     virtual antlrcpp::Any visitMultiplicative_expression(CortoParser::Multiplicative_expressionContext *context) = 0;
+
+    virtual antlrcpp::Any visitMultiplicative_operator(CortoParser::Multiplicative_operatorContext *context) = 0;
 
     virtual antlrcpp::Any visitCast_expression(CortoParser::Cast_expressionContext *context) = 0;
 
@@ -70,6 +80,8 @@ public:
     virtual antlrcpp::Any visitUnary_operator(CortoParser::Unary_operatorContext *context) = 0;
 
     virtual antlrcpp::Any visitPostfix_expression(CortoParser::Postfix_expressionContext *context) = 0;
+
+    virtual antlrcpp::Any visitInc_operator(CortoParser::Inc_operatorContext *context) = 0;
 
     virtual antlrcpp::Any visitInitializer_assignment(CortoParser::Initializer_assignmentContext *context) = 0;
 
@@ -87,7 +99,7 @@ public:
 
     virtual antlrcpp::Any visitPrimary_expression(CortoParser::Primary_expressionContext *context) = 0;
 
-    virtual antlrcpp::Any visitConstant(CortoParser::ConstantContext *context) = 0;
+    virtual antlrcpp::Any visitLiteral(CortoParser::LiteralContext *context) = 0;
 
     virtual antlrcpp::Any visitObject_expression(CortoParser::Object_expressionContext *context) = 0;
 
