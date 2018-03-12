@@ -161,9 +161,9 @@ CortoParser::StatementsContext* CortoParser::statements() {
       | (1ULL << CortoParser::T__43)
       | (1ULL << CortoParser::BOOLEAN)
       | (1ULL << CortoParser::IDENTIFIER)
-      | (1ULL << CortoParser::INTEGER)
-      | (1ULL << CortoParser::SIGNED_INTEGER)
-      | (1ULL << CortoParser::FLOATING_POINT)
+      | (1ULL << CortoParser::MEASUREMENT)
+      | (1ULL << CortoParser::NUMERICAL)
+      | (1ULL << CortoParser::HEXADECIMAL)
       | (1ULL << CortoParser::CHARACTER)
       | (1ULL << CortoParser::STRING)
       | (1ULL << CortoParser::EOL))) != 0)) {
@@ -2207,9 +2207,9 @@ CortoParser::Cast_expressionContext* CortoParser::cast_expression() {
       case CortoParser::T__43:
       case CortoParser::BOOLEAN:
       case CortoParser::IDENTIFIER:
-      case CortoParser::INTEGER:
-      case CortoParser::SIGNED_INTEGER:
-      case CortoParser::FLOATING_POINT:
+      case CortoParser::MEASUREMENT:
+      case CortoParser::NUMERICAL:
+      case CortoParser::HEXADECIMAL:
       case CortoParser::CHARACTER:
       case CortoParser::STRING: {
         enterOuterAlt(_localctx, 1);
@@ -2307,9 +2307,9 @@ CortoParser::Unary_expressionContext* CortoParser::unary_expression() {
       case CortoParser::T__43:
       case CortoParser::BOOLEAN:
       case CortoParser::IDENTIFIER:
-      case CortoParser::INTEGER:
-      case CortoParser::SIGNED_INTEGER:
-      case CortoParser::FLOATING_POINT:
+      case CortoParser::MEASUREMENT:
+      case CortoParser::NUMERICAL:
+      case CortoParser::HEXADECIMAL:
       case CortoParser::CHARACTER:
       case CortoParser::STRING: {
         enterOuterAlt(_localctx, 1);
@@ -2817,9 +2817,9 @@ CortoParser::Initializer_compositeContext* CortoParser::initializer_composite() 
       | (1ULL << CortoParser::T__43)
       | (1ULL << CortoParser::BOOLEAN)
       | (1ULL << CortoParser::IDENTIFIER)
-      | (1ULL << CortoParser::INTEGER)
-      | (1ULL << CortoParser::SIGNED_INTEGER)
-      | (1ULL << CortoParser::FLOATING_POINT)
+      | (1ULL << CortoParser::MEASUREMENT)
+      | (1ULL << CortoParser::NUMERICAL)
+      | (1ULL << CortoParser::HEXADECIMAL)
       | (1ULL << CortoParser::CHARACTER)
       | (1ULL << CortoParser::STRING))) != 0)) {
       setState(352);
@@ -2903,9 +2903,9 @@ CortoParser::Initializer_collectionContext* CortoParser::initializer_collection(
       | (1ULL << CortoParser::T__43)
       | (1ULL << CortoParser::BOOLEAN)
       | (1ULL << CortoParser::IDENTIFIER)
-      | (1ULL << CortoParser::INTEGER)
-      | (1ULL << CortoParser::SIGNED_INTEGER)
-      | (1ULL << CortoParser::FLOATING_POINT)
+      | (1ULL << CortoParser::MEASUREMENT)
+      | (1ULL << CortoParser::NUMERICAL)
+      | (1ULL << CortoParser::HEXADECIMAL)
       | (1ULL << CortoParser::CHARACTER)
       | (1ULL << CortoParser::STRING))) != 0)) {
       setState(358);
@@ -3254,9 +3254,9 @@ CortoParser::Primary_expressionContext* CortoParser::primary_expression() {
     _errHandler->sync(this);
     switch (_input->LA(1)) {
       case CortoParser::BOOLEAN:
-      case CortoParser::INTEGER:
-      case CortoParser::SIGNED_INTEGER:
-      case CortoParser::FLOATING_POINT:
+      case CortoParser::MEASUREMENT:
+      case CortoParser::NUMERICAL:
+      case CortoParser::HEXADECIMAL:
       case CortoParser::CHARACTER:
       case CortoParser::STRING: {
         enterOuterAlt(_localctx, 1);
@@ -3298,16 +3298,16 @@ tree::TerminalNode* CortoParser::ConstantContext::BOOLEAN() {
   return getToken(CortoParser::BOOLEAN, 0);
 }
 
-tree::TerminalNode* CortoParser::ConstantContext::INTEGER() {
-  return getToken(CortoParser::INTEGER, 0);
+tree::TerminalNode* CortoParser::ConstantContext::MEASUREMENT() {
+  return getToken(CortoParser::MEASUREMENT, 0);
 }
 
-tree::TerminalNode* CortoParser::ConstantContext::SIGNED_INTEGER() {
-  return getToken(CortoParser::SIGNED_INTEGER, 0);
+tree::TerminalNode* CortoParser::ConstantContext::NUMERICAL() {
+  return getToken(CortoParser::NUMERICAL, 0);
 }
 
-tree::TerminalNode* CortoParser::ConstantContext::FLOATING_POINT() {
-  return getToken(CortoParser::FLOATING_POINT, 0);
+tree::TerminalNode* CortoParser::ConstantContext::HEXADECIMAL() {
+  return getToken(CortoParser::HEXADECIMAL, 0);
 }
 
 tree::TerminalNode* CortoParser::ConstantContext::CHARACTER() {
@@ -3357,9 +3357,9 @@ CortoParser::ConstantContext* CortoParser::constant() {
     _la = _input->LA(1);
     if (!((((_la & ~ 0x3fULL) == 0) &&
       ((1ULL << _la) & ((1ULL << CortoParser::BOOLEAN)
-      | (1ULL << CortoParser::INTEGER)
-      | (1ULL << CortoParser::SIGNED_INTEGER)
-      | (1ULL << CortoParser::FLOATING_POINT)
+      | (1ULL << CortoParser::MEASUREMENT)
+      | (1ULL << CortoParser::NUMERICAL)
+      | (1ULL << CortoParser::HEXADECIMAL)
       | (1ULL << CortoParser::CHARACTER)
       | (1ULL << CortoParser::STRING))) != 0))) {
     _errHandler->recoverInline(this);
@@ -3734,9 +3734,9 @@ std::vector<std::string> CortoParser::_literalNames = {
 std::vector<std::string> CortoParser::_symbolicNames = {
   "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", 
   "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", 
-  "", "", "", "", "", "", "", "", "", "BOOLEAN", "IDENTIFIER", "INTEGER", 
-  "SIGNED_INTEGER", "FLOATING_POINT", "HEXADECIMAL", "CHARACTER", "STRING", 
-  "EOL", "WS"
+  "", "", "", "", "", "", "", "", "", "BOOLEAN", "IDENTIFIER", "MEASUREMENT", 
+  "NUMERICAL", "INTEGER", "SIGNED_INTEGER", "FLOATING_POINT", "HEXADECIMAL", 
+  "CHARACTER", "STRING", "EOL", "WS"
 };
 
 dfa::Vocabulary CortoParser::_vocabulary(_literalNames, _symbolicNames);
@@ -3759,7 +3759,7 @@ CortoParser::Initializer::Initializer() {
 
   _serializedATN = {
     0x3, 0x608b, 0xa72a, 0x8133, 0xb9ed, 0x417c, 0x3be7, 0x7786, 0x5964, 
-    0x3, 0x38, 0x1a6, 0x4, 0x2, 0x9, 0x2, 0x4, 0x3, 0x9, 0x3, 0x4, 0x4, 
+    0x3, 0x3a, 0x1a6, 0x4, 0x2, 0x9, 0x2, 0x4, 0x3, 0x9, 0x3, 0x4, 0x4, 
     0x9, 0x4, 0x4, 0x5, 0x9, 0x5, 0x4, 0x6, 0x9, 0x6, 0x4, 0x7, 0x9, 0x7, 
     0x4, 0x8, 0x9, 0x8, 0x4, 0x9, 0x9, 0x9, 0x4, 0xa, 0x9, 0xa, 0x4, 0xb, 
     0x9, 0xb, 0x4, 0xc, 0x9, 0xc, 0x4, 0xd, 0x9, 0xd, 0x4, 0xe, 0x9, 0xe, 
@@ -3833,7 +3833,7 @@ CortoParser::Initializer::Initializer() {
     0x26, 0x28, 0x2a, 0x2c, 0x2e, 0x30, 0x32, 0x34, 0x36, 0x38, 0x3a, 0x3c, 
     0x3e, 0x40, 0x42, 0x44, 0x46, 0x48, 0x4a, 0x2, 0x5, 0x3, 0x2, 0x8, 0x12, 
     0x5, 0x2, 0x19, 0x19, 0x22, 0x24, 0x29, 0x2a, 0x5, 0x2, 0x2f, 0x2f, 
-    0x31, 0x33, 0x35, 0x36, 0x2, 0x1ba, 0x2, 0x4c, 0x3, 0x2, 0x2, 0x2, 0x4, 
+    0x31, 0x32, 0x36, 0x38, 0x2, 0x1ba, 0x2, 0x4c, 0x3, 0x2, 0x2, 0x2, 0x4, 
     0x51, 0x3, 0x2, 0x2, 0x2, 0x6, 0x59, 0x3, 0x2, 0x2, 0x2, 0x8, 0x5c, 
     0x3, 0x2, 0x2, 0x2, 0xa, 0x78, 0x3, 0x2, 0x2, 0x2, 0xc, 0x87, 0x3, 0x2, 
     0x2, 0x2, 0xe, 0x89, 0x3, 0x2, 0x2, 0x2, 0x10, 0x8c, 0x3, 0x2, 0x2, 
@@ -3854,8 +3854,8 @@ CortoParser::Initializer::Initializer() {
     0x3, 0x3, 0x2, 0x2, 0x2, 0x4e, 0x50, 0x5, 0x6, 0x4, 0x2, 0x4f, 0x4e, 
     0x3, 0x2, 0x2, 0x2, 0x50, 0x53, 0x3, 0x2, 0x2, 0x2, 0x51, 0x4f, 0x3, 
     0x2, 0x2, 0x2, 0x51, 0x52, 0x3, 0x2, 0x2, 0x2, 0x52, 0x5, 0x3, 0x2, 
-    0x2, 0x2, 0x53, 0x51, 0x3, 0x2, 0x2, 0x2, 0x54, 0x5a, 0x7, 0x37, 0x2, 
-    0x2, 0x55, 0x56, 0x5, 0x12, 0xa, 0x2, 0x56, 0x57, 0x7, 0x37, 0x2, 0x2, 
+    0x2, 0x2, 0x53, 0x51, 0x3, 0x2, 0x2, 0x2, 0x54, 0x5a, 0x7, 0x39, 0x2, 
+    0x2, 0x55, 0x56, 0x5, 0x12, 0xa, 0x2, 0x56, 0x57, 0x7, 0x39, 0x2, 0x2, 
     0x57, 0x5a, 0x3, 0x2, 0x2, 0x2, 0x58, 0x5a, 0x5, 0x8, 0x5, 0x2, 0x59, 
     0x54, 0x3, 0x2, 0x2, 0x2, 0x59, 0x55, 0x3, 0x2, 0x2, 0x2, 0x59, 0x58, 
     0x3, 0x2, 0x2, 0x2, 0x5a, 0x7, 0x3, 0x2, 0x2, 0x2, 0x5b, 0x5d, 0x5, 
@@ -3863,7 +3863,7 @@ CortoParser::Initializer::Initializer() {
     0x2, 0x2, 0x5d, 0x5e, 0x3, 0x2, 0x2, 0x2, 0x5e, 0x60, 0x5, 0xa, 0x6, 
     0x2, 0x5f, 0x61, 0x5, 0x36, 0x1c, 0x2, 0x60, 0x5f, 0x3, 0x2, 0x2, 0x2, 
     0x60, 0x61, 0x3, 0x2, 0x2, 0x2, 0x61, 0x64, 0x3, 0x2, 0x2, 0x2, 0x62, 
-    0x65, 0x5, 0x10, 0x9, 0x2, 0x63, 0x65, 0x7, 0x37, 0x2, 0x2, 0x64, 0x62, 
+    0x65, 0x5, 0x10, 0x9, 0x2, 0x63, 0x65, 0x7, 0x39, 0x2, 0x2, 0x64, 0x62, 
     0x3, 0x2, 0x2, 0x2, 0x64, 0x63, 0x3, 0x2, 0x2, 0x2, 0x65, 0x9, 0x3, 
     0x2, 0x2, 0x2, 0x66, 0x68, 0x5, 0x4a, 0x26, 0x2, 0x67, 0x69, 0x5, 0xc, 
     0x7, 0x2, 0x68, 0x67, 0x3, 0x2, 0x2, 0x2, 0x68, 0x69, 0x3, 0x2, 0x2, 

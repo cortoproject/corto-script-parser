@@ -1,6 +1,6 @@
 /* This is a managed file. Do not delete this comment. */
 
-#include <corto/parser/parser.h>
+#include <corto/script/parser/parser.h>
 
 #include "antlr4-runtime.h"
 #include "CortoLexer.h"
@@ -27,9 +27,6 @@ int cortomain(int argc, char *argv[]) {
             corto_throw("failed to parse file '%s'", argv[1]);
             result = -1;
         }
-    } else {
-        corto_throw("missing input file");
-        result = -1;
     }
 
     return result;

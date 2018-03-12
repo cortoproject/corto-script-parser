@@ -19,8 +19,9 @@ public:
     T__26 = 27, T__27 = 28, T__28 = 29, T__29 = 30, T__30 = 31, T__31 = 32, 
     T__32 = 33, T__33 = 34, T__34 = 35, T__35 = 36, T__36 = 37, T__37 = 38, 
     T__38 = 39, T__39 = 40, T__40 = 41, T__41 = 42, T__42 = 43, T__43 = 44, 
-    BOOLEAN = 45, IDENTIFIER = 46, INTEGER = 47, SIGNED_INTEGER = 48, FLOATING_POINT = 49, 
-    HEXADECIMAL = 50, CHARACTER = 51, STRING = 52, EOL = 53, WS = 54
+    BOOLEAN = 45, IDENTIFIER = 46, MEASUREMENT = 47, NUMERICAL = 48, INTEGER = 49, 
+    SIGNED_INTEGER = 50, FLOATING_POINT = 51, HEXADECIMAL = 52, CHARACTER = 53, 
+    STRING = 54, EOL = 55, WS = 56
   };
 
   CortoLexer(antlr4::CharStream *input);

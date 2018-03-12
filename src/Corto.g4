@@ -185,9 +185,9 @@ primary_expression
 
 constant
     : BOOLEAN
-    | INTEGER
-    | SIGNED_INTEGER
-    | FLOATING_POINT
+    | MEASUREMENT
+    | NUMERICAL
+    | HEXADECIMAL
     | CHARACTER
     | STRING
     ;
@@ -207,6 +207,21 @@ BOOLEAN
 
 IDENTIFIER
     : LETTER_UNDERSCORE (LETTER_UNDERSCORE | DIGIT)*
+    ;
+
+MEASUREMENT
+    : NUMERICAL MEASUREMENT_POSTFIX?
+    ;
+
+fragment MEASUREMENT_POSTFIX
+    : '%'
+    | LETTER+
+    ;
+
+NUMERICAL
+    : INTEGER
+    | SIGNED_INTEGER
+    | FLOATING_POINT
     ;
 
 INTEGER
@@ -249,9 +264,13 @@ fragment NUMBER
     ;
 
 fragment LETTER_UNDERSCORE
+    : LETTER
+    | '_'
+    ;
+
+fragment LETTER
     : 'a'..'z'
     | 'A'..'Z'
-    | '_'
     ;
 
 fragment DIGIT
