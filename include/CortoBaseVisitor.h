@@ -187,6 +187,10 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual antlrcpp::Any visitEol(CortoParser::EolContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
 
 };
 

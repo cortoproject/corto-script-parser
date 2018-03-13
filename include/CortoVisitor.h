@@ -105,6 +105,8 @@ public:
 
     virtual antlrcpp::Any visitObject_identifier(CortoParser::Object_identifierContext *context) = 0;
 
+    virtual antlrcpp::Any visitEol(CortoParser::EolContext *context) = 0;
+
 
 };
 

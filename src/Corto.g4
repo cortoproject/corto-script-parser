@@ -20,13 +20,13 @@ statements
     ;
 
 statement
-    : EOL
-    | expression EOL
+    : NL
+    | expression eol
     | declaration
     ;
 
 declaration
-    : object_expression? declaration_identifier initializer_assignment? (scope | EOL)
+    : object_expression? declaration_identifier initializer_assignment? (scope | eol)
     ;
 
 declaration_identifier
@@ -197,6 +197,7 @@ literal
     | FLOATING_POINT
     | INTEGER
     | STRING
+    | NULL_LITERAL
     ;
 
 object_expression
@@ -210,6 +211,10 @@ object_identifier
 
 BOOLEAN
     : 'true' | 'false'
+    ;
+
+NULL_LITERAL
+    : 'null'
     ;
 
 IDENTIFIER
@@ -258,8 +263,12 @@ IGNORE_NEWLINE
     : '\r'? '\n' {nesting > 0}? -> skip
     ;
 
-EOL : '\r'? '\n'
+eol : NL
+    | EOF
     | ';'
+    ;
+
+NL  : '\r'? '\n'
     ;
 
 WS: [ \t\r]+ -> skip;

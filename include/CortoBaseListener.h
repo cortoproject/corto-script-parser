@@ -145,6 +145,9 @@ public:
   virtual void enterObject_identifier(CortoParser::Object_identifierContext * /*ctx*/) override { }
   virtual void exitObject_identifier(CortoParser::Object_identifierContext * /*ctx*/) override { }
 
+  virtual void enterEol(CortoParser::EolContext * /*ctx*/) override { }
+  virtual void exitEol(CortoParser::EolContext * /*ctx*/) override { }
+
 
   virtual void enterEveryRule(antlr4::ParserRuleContext * /*ctx*/) override { }
   virtual void exitEveryRule(antlr4::ParserRuleContext * /*ctx*/) override { }

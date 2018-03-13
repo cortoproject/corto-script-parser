@@ -143,6 +143,9 @@ public:
   virtual void enterObject_identifier(CortoParser::Object_identifierContext *ctx) = 0;
   virtual void exitObject_identifier(CortoParser::Object_identifierContext *ctx) = 0;
 
+  virtual void enterEol(CortoParser::EolContext *ctx) = 0;
+  virtual void exitEol(CortoParser::EolContext *ctx) = 0;
+
 
 };
 

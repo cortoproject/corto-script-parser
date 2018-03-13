@@ -24,11 +24,12 @@ public:
     T__20 = 21, T__21 = 22, T__22 = 23, T__23 = 24, T__24 = 25, T__25 = 26, 
     T__26 = 27, T__27 = 28, T__28 = 29, T__29 = 30, T__30 = 31, T__31 = 32, 
     T__32 = 33, T__33 = 34, T__34 = 35, T__35 = 36, T__36 = 37, T__37 = 38, 
-    T__38 = 39, T__39 = 40, BOOLEAN = 41, IDENTIFIER = 42, HEXADECIMAL = 43, 
-    SIGNED_INTEGER_MEASUREMENT = 44, INTEGER_MEASUREMENT = 45, FLOATING_POINT_MEASUREMENT = 46, 
-    INTEGER = 47, SIGNED_INTEGER = 48, FLOATING_POINT = 49, STRING = 50, 
-    LPAREN = 51, RPAREN = 52, LBRACK = 53, RBRACK = 54, IGNORE_NEWLINE = 55, 
-    EOL = 56, WS = 57
+    T__38 = 39, T__39 = 40, T__40 = 41, BOOLEAN = 42, NULL_LITERAL = 43, 
+    IDENTIFIER = 44, HEXADECIMAL = 45, SIGNED_INTEGER_MEASUREMENT = 46, 
+    INTEGER_MEASUREMENT = 47, FLOATING_POINT_MEASUREMENT = 48, INTEGER = 49, 
+    SIGNED_INTEGER = 50, FLOATING_POINT = 51, STRING = 52, LPAREN = 53, 
+    RPAREN = 54, LBRACK = 55, RBRACK = 56, IGNORE_NEWLINE = 57, NL = 58, 
+    WS = 59
   };
 
   enum {
@@ -45,7 +46,7 @@ public:
     RuleInitializer_assignment = 32, RuleInitializer_expression = 33, RuleInitializer_composite = 34, 
     RuleInitializer_collection = 35, RuleInitializer_list = 36, RuleInitializer_value = 37, 
     RuleInitializer_key = 38, RulePrimary_expression = 39, RuleLiteral = 40, 
-    RuleObject_expression = 41, RuleObject_identifier = 42
+    RuleObject_expression = 41, RuleObject_identifier = 42, RuleEol = 43
   };
 
   CortoParser(antlr4::TokenStream *input);
@@ -100,7 +101,8 @@ public:
   class Primary_expressionContext;
   class LiteralContext;
   class Object_expressionContext;
-  class Object_identifierContext; 
+  class Object_identifierContext;
+  class EolContext; 
 
   class  ProgramContext : public antlr4::ParserRuleContext {
   public:
@@ -137,8 +139,9 @@ public:
   public:
     StatementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    antlr4::tree::TerminalNode *EOL();
+    antlr4::tree::TerminalNode *NL();
     ExpressionContext *expression();
+    EolContext *eol();
     DeclarationContext *declaration();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -156,7 +159,7 @@ public:
     virtual size_t getRuleIndex() const override;
     Declaration_identifierContext *declaration_identifier();
     ScopeContext *scope();
-    antlr4::tree::TerminalNode *EOL();
+    EolContext *eol();
     Object_expressionContext *object_expression();
     Initializer_assignmentContext *initializer_assignment();
 
@@ -767,6 +770,7 @@ public:
     antlr4::tree::TerminalNode *FLOATING_POINT();
     antlr4::tree::TerminalNode *INTEGER();
     antlr4::tree::TerminalNode *STRING();
+    antlr4::tree::TerminalNode *NULL_LITERAL();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -809,6 +813,22 @@ public:
   };
 
   Object_identifierContext* object_identifier();
+
+  class  EolContext : public antlr4::ParserRuleContext {
+  public:
+    EolContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *NL();
+    antlr4::tree::TerminalNode *EOF();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
+  };
+
+  EolContext* eol();
 
 
   virtual bool sempred(antlr4::RuleContext *_localctx, size_t ruleIndex, size_t predicateIndex) override;
