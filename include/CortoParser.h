@@ -195,8 +195,10 @@ public:
   public:
     Argument_declarationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *LPAREN();
     std::vector<ArgumentContext *> argument();
     ArgumentContext* argument(size_t i);
+    antlr4::tree::TerminalNode *RPAREN();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -243,9 +245,6 @@ public:
     ExpressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     Assignment_expressionContext *assignment_expression();
-    antlr4::tree::TerminalNode *LPAREN();
-    ExpressionContext *expression();
-    antlr4::tree::TerminalNode *RPAREN();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -545,7 +544,9 @@ public:
     Cast_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     Unary_expressionContext *unary_expression();
+    antlr4::tree::TerminalNode *LPAREN();
     Object_expressionContext *object_expression();
+    antlr4::tree::TerminalNode *RPAREN();
     Cast_expressionContext *cast_expression();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -747,6 +748,9 @@ public:
     virtual size_t getRuleIndex() const override;
     LiteralContext *literal();
     Object_expressionContext *object_expression();
+    antlr4::tree::TerminalNode *LPAREN();
+    ExpressionContext *expression();
+    antlr4::tree::TerminalNode *RPAREN();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;

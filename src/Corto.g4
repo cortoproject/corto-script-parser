@@ -36,8 +36,8 @@ declaration_identifier
     ;
 
 argument_declaration
-    : '(' argument (',' argument)* ')'
-    | '(' ')'
+    : LPAREN argument (',' argument)* RPAREN
+    | LPAREN RPAREN
     ;
 
 argument
@@ -50,7 +50,6 @@ scope
 
 expression
     : assignment_expression
-    | LPAREN expression RPAREN
     ;
 
 assignment_expression
@@ -128,7 +127,7 @@ multiplicative_operator: '*' | '/' | '%';
 
 cast_expression
     : unary_expression
-    | '(' object_expression ')' cast_expression
+    | LPAREN object_expression RPAREN cast_expression
     ;
 
 unary_expression
@@ -185,6 +184,7 @@ initializer_key
 primary_expression
     : literal
     | object_expression
+    | LPAREN expression RPAREN
     ;
 
 literal
