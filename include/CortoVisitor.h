@@ -83,6 +83,8 @@ public:
 
     virtual antlrcpp::Any visitInc_operator(CortoParser::Inc_operatorContext *context) = 0;
 
+    virtual antlrcpp::Any visitStorage_expression(CortoParser::Storage_expressionContext *context) = 0;
+
     virtual antlrcpp::Any visitInitializer_assignment(CortoParser::Initializer_assignmentContext *context) = 0;
 
     virtual antlrcpp::Any visitInitializer_expression(CortoParser::Initializer_expressionContext *context) = 0;
@@ -101,9 +103,7 @@ public:
 
     virtual antlrcpp::Any visitLiteral(CortoParser::LiteralContext *context) = 0;
 
-    virtual antlrcpp::Any visitObject_expression(CortoParser::Object_expressionContext *context) = 0;
-
-    virtual antlrcpp::Any visitObject_identifier(CortoParser::Object_identifierContext *context) = 0;
+    virtual antlrcpp::Any visitStorage_identifier(CortoParser::Storage_identifierContext *context) = 0;
 
     virtual antlrcpp::Any visitEol(CortoParser::EolContext *context) = 0;
 

@@ -26,13 +26,13 @@ statement
     ;
 
 declaration
-    : object_expression? declaration_identifier initializer_assignment? (scope | eol)
+    : storage_expression? declaration_identifier initializer_assignment? (scope | eol)
     ;
 
 declaration_identifier
-    : object_identifier argument_declaration?
-    | object_identifier (',' object_identifier)+
-    | object_expression (',' object_expression)+
+    : storage_identifier argument_declaration?
+    | storage_identifier (',' storage_identifier)+
+    | storage_expression (',' storage_expression)+
     ;
 
 argument_declaration
@@ -41,7 +41,7 @@ argument_declaration
     ;
 
 argument
-    : object_expression IDENTIFIER
+    : storage_expression IDENTIFIER
     ;
 
 scope
@@ -54,7 +54,7 @@ expression
 
 assignment_expression
     : conditional_expression
-    | unary_expression assignment_operator assignment_expression
+    | storage_expression assignment_operator assignment_expression
     ;
 
 assignment_operator
@@ -67,12 +67,12 @@ conditional_expression
 
 logical_or_expression
     : logical_and_expression
-    | logical_or_expression '||' logical_and_expression
+    | logical_or_expression COND_OR logical_and_expression
     ;
 
 logical_and_expression
     : or_expression
-    | logical_and_expression '&&' or_expression
+    | logical_and_expression COND_AND or_expression
     ;
 
 or_expression
@@ -127,7 +127,7 @@ multiplicative_operator: '*' | '/' | '%';
 
 cast_expression
     : unary_expression
-    | LPAREN object_expression RPAREN cast_expression
+    | LPAREN storage_expression RPAREN cast_expression
     ;
 
 unary_expression
@@ -140,13 +140,17 @@ unary_operator: '&' | '*' | '+' | '-' | '~' | '!' ;
 
 postfix_expression
     : primary_expression
-    | postfix_expression '[' expression ']'
-    | postfix_expression initializer_composite
-    | postfix_expression '.' IDENTIFIER
+    | storage_expression
     | postfix_expression inc_operator
     ;
 
 inc_operator: '++' | '--';
+
+storage_expression
+    : storage_identifier
+    | storage_expression initializer_expression
+    | storage_expression '.' IDENTIFIER
+    ;
 
 initializer_assignment
     : initializer_expression
@@ -178,12 +182,11 @@ initializer_value
 initializer_key
     : IDENTIFIER ('.' IDENTIFIER)*
     | literal
-    | object_identifier
+    | storage_identifier
     ;
 
 primary_expression
     : literal
-    | object_expression
     | LPAREN expression RPAREN
     ;
 
@@ -200,13 +203,9 @@ literal
     | NULL_LITERAL
     ;
 
-object_expression
-    : object_identifier (initializer_expression)*
-    ;
-
-object_identifier
-    : 'root/'
-    | '/'? IDENTIFIER ('/' IDENTIFIER)*
+storage_identifier
+    : IDENTIFIER
+    | SCOPE_IDENTIFIER
     ;
 
 BOOLEAN
@@ -215,6 +214,22 @@ BOOLEAN
 
 NULL_LITERAL
     : 'null'
+    ;
+
+COND_AND
+    : '&&'
+    | 'and'
+    ;
+
+COND_OR
+    : '||'
+    | 'or'
+    ;
+
+SCOPE_IDENTIFIER
+    : 'root/'
+    | '/' IDENTIFIER ('/' IDENTIFIER)*
+    | IDENTIFIER ('/' IDENTIFIER) +
     ;
 
 IDENTIFIER

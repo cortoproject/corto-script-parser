@@ -110,6 +110,9 @@ public:
   virtual void enterInc_operator(CortoParser::Inc_operatorContext *ctx) = 0;
   virtual void exitInc_operator(CortoParser::Inc_operatorContext *ctx) = 0;
 
+  virtual void enterStorage_expression(CortoParser::Storage_expressionContext *ctx) = 0;
+  virtual void exitStorage_expression(CortoParser::Storage_expressionContext *ctx) = 0;
+
   virtual void enterInitializer_assignment(CortoParser::Initializer_assignmentContext *ctx) = 0;
   virtual void exitInitializer_assignment(CortoParser::Initializer_assignmentContext *ctx) = 0;
 
@@ -137,11 +140,8 @@ public:
   virtual void enterLiteral(CortoParser::LiteralContext *ctx) = 0;
   virtual void exitLiteral(CortoParser::LiteralContext *ctx) = 0;
 
-  virtual void enterObject_expression(CortoParser::Object_expressionContext *ctx) = 0;
-  virtual void exitObject_expression(CortoParser::Object_expressionContext *ctx) = 0;
-
-  virtual void enterObject_identifier(CortoParser::Object_identifierContext *ctx) = 0;
-  virtual void exitObject_identifier(CortoParser::Object_identifierContext *ctx) = 0;
+  virtual void enterStorage_identifier(CortoParser::Storage_identifierContext *ctx) = 0;
+  virtual void exitStorage_identifier(CortoParser::Storage_identifierContext *ctx) = 0;
 
   virtual void enterEol(CortoParser::EolContext *ctx) = 0;
   virtual void exitEol(CortoParser::EolContext *ctx) = 0;

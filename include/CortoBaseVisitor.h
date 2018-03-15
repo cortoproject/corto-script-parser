@@ -143,6 +143,10 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual antlrcpp::Any visitStorage_expression(CortoParser::Storage_expressionContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual antlrcpp::Any visitInitializer_assignment(CortoParser::Initializer_assignmentContext *ctx) override {
     return visitChildren(ctx);
   }
@@ -179,11 +183,7 @@ public:
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitObject_expression(CortoParser::Object_expressionContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual antlrcpp::Any visitObject_identifier(CortoParser::Object_identifierContext *ctx) override {
+  virtual antlrcpp::Any visitStorage_identifier(CortoParser::Storage_identifierContext *ctx) override {
     return visitChildren(ctx);
   }
 

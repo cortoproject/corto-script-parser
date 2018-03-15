@@ -7,7 +7,6 @@
 #define CORTO_SCRIPT_PARSER_H
 
 #include <corto/corto.h>
-#include <corto/c/c.h>
 #include <antlr4/cpp/cpp.h>
 
 #include <corto/script/parser/CortoLexer.h>
