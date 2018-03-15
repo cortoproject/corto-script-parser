@@ -599,6 +599,7 @@ public:
     virtual size_t getRuleIndex() const override;
     Primary_expressionContext *primary_expression();
     Storage_expressionContext *storage_expression();
+    Initializer_expressionContext *initializer_expression();
     Postfix_expressionContext *postfix_expression();
     Inc_operatorContext *inc_operator();
 

@@ -141,6 +141,7 @@ unary_operator: '&' | '*' | '+' | '-' | '~' | '!' ;
 postfix_expression
     : primary_expression
     | storage_expression
+    | initializer_expression
     | postfix_expression inc_operator
     ;
 
