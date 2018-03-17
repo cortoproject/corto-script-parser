@@ -35,18 +35,19 @@ public:
   enum {
     RuleProgram = 0, RuleStatements = 1, RuleStatement = 2, RuleDeclaration = 3, 
     RuleDeclaration_identifier = 4, RuleArgument_declaration = 5, RuleArgument = 6, 
-    RuleScope = 7, RuleExpression = 8, RuleAssignment_expression = 9, RuleAssignment_operator = 10, 
-    RuleConditional_expression = 11, RuleLogical_or_expression = 12, RuleLogical_and_expression = 13, 
-    RuleOr_expression = 14, RuleXor_expression = 15, RuleAnd_expression = 16, 
-    RuleEquality_expression = 17, RuleEquality_operator = 18, RuleRelational_expression = 19, 
-    RuleRelational_operator = 20, RuleShift_expression = 21, RuleShift_operator = 22, 
-    RuleAdditive_expression = 23, RuleAdditive_operator = 24, RuleMultiplicative_expression = 25, 
-    RuleMultiplicative_operator = 26, RuleCast_expression = 27, RuleUnary_expression = 28, 
-    RuleUnary_operator = 29, RulePostfix_expression = 30, RuleInc_operator = 31, 
-    RuleStorage_expression = 32, RuleInitializer_assignment = 33, RuleInitializer_expression = 34, 
-    RuleInitializer_composite = 35, RuleInitializer_collection = 36, RuleInitializer_list = 37, 
-    RuleInitializer_value = 38, RuleInitializer_key = 39, RulePrimary_expression = 40, 
-    RuleLiteral = 41, RuleStorage_identifier = 42, RuleEol = 43
+    RuleScope = 7, RuleDefault_scope_type = 8, RuleExpression = 9, RuleAssignment_expression = 10, 
+    RuleAssignment_operator = 11, RuleConditional_expression = 12, RuleLogical_or_expression = 13, 
+    RuleLogical_and_expression = 14, RuleOr_expression = 15, RuleXor_expression = 16, 
+    RuleAnd_expression = 17, RuleEquality_expression = 18, RuleEquality_operator = 19, 
+    RuleRelational_expression = 20, RuleRelational_operator = 21, RuleShift_expression = 22, 
+    RuleShift_operator = 23, RuleAdditive_expression = 24, RuleAdditive_operator = 25, 
+    RuleMultiplicative_expression = 26, RuleMultiplicative_operator = 27, 
+    RuleCast_expression = 28, RuleUnary_expression = 29, RuleUnary_operator = 30, 
+    RulePostfix_expression = 31, RuleInc_operator = 32, RuleStorage_expression = 33, 
+    RuleInitializer_assignment = 34, RuleInitializer_shorthand = 35, RuleInitializer_expression = 36, 
+    RuleInitializer_composite = 37, RuleInitializer_collection = 38, RuleInitializer_list = 39, 
+    RuleInitializer_value = 40, RuleInitializer_key = 41, RulePrimary_expression = 42, 
+    RuleLiteral = 43, RuleStorage_identifier = 44, RuleEol = 45
   };
 
   CortoParser(antlr4::TokenStream *input);
@@ -67,6 +68,7 @@ public:
   class Argument_declarationContext;
   class ArgumentContext;
   class ScopeContext;
+  class Default_scope_typeContext;
   class ExpressionContext;
   class Assignment_expressionContext;
   class Assignment_operatorContext;
@@ -93,6 +95,7 @@ public:
   class Inc_operatorContext;
   class Storage_expressionContext;
   class Initializer_assignmentContext;
+  class Initializer_shorthandContext;
   class Initializer_expressionContext;
   class Initializer_compositeContext;
   class Initializer_collectionContext;
@@ -157,11 +160,12 @@ public:
   public:
     DeclarationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    Storage_expressionContext *storage_expression();
     Declaration_identifierContext *declaration_identifier();
     ScopeContext *scope();
     EolContext *eol();
-    Storage_expressionContext *storage_expression();
     Initializer_assignmentContext *initializer_assignment();
+    Initializer_shorthandContext *initializer_shorthand();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -230,6 +234,7 @@ public:
     ScopeContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     StatementsContext *statements();
+    Default_scope_typeContext *default_scope_type();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -239,6 +244,21 @@ public:
   };
 
   ScopeContext* scope();
+
+  class  Default_scope_typeContext : public antlr4::ParserRuleContext {
+  public:
+    Default_scope_typeContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    Storage_expressionContext *storage_expression();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
+  };
+
+  Default_scope_typeContext* default_scope_type();
 
   class  ExpressionContext : public antlr4::ParserRuleContext {
   public:
@@ -649,7 +669,7 @@ public:
     Initializer_assignmentContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     Initializer_expressionContext *initializer_expression();
-    Initializer_listContext *initializer_list();
+    Initializer_shorthandContext *initializer_shorthand();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -659,6 +679,21 @@ public:
   };
 
   Initializer_assignmentContext* initializer_assignment();
+
+  class  Initializer_shorthandContext : public antlr4::ParserRuleContext {
+  public:
+    Initializer_shorthandContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    Initializer_listContext *initializer_list();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
+  };
+
+  Initializer_shorthandContext* initializer_shorthand();
 
   class  Initializer_expressionContext : public antlr4::ParserRuleContext {
   public:

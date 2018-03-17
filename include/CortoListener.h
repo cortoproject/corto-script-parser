@@ -38,6 +38,9 @@ public:
   virtual void enterScope(CortoParser::ScopeContext *ctx) = 0;
   virtual void exitScope(CortoParser::ScopeContext *ctx) = 0;
 
+  virtual void enterDefault_scope_type(CortoParser::Default_scope_typeContext *ctx) = 0;
+  virtual void exitDefault_scope_type(CortoParser::Default_scope_typeContext *ctx) = 0;
+
   virtual void enterExpression(CortoParser::ExpressionContext *ctx) = 0;
   virtual void exitExpression(CortoParser::ExpressionContext *ctx) = 0;
 
@@ -115,6 +118,9 @@ public:
 
   virtual void enterInitializer_assignment(CortoParser::Initializer_assignmentContext *ctx) = 0;
   virtual void exitInitializer_assignment(CortoParser::Initializer_assignmentContext *ctx) = 0;
+
+  virtual void enterInitializer_shorthand(CortoParser::Initializer_shorthandContext *ctx) = 0;
+  virtual void exitInitializer_shorthand(CortoParser::Initializer_shorthandContext *ctx) = 0;
 
   virtual void enterInitializer_expression(CortoParser::Initializer_expressionContext *ctx) = 0;
   virtual void exitInitializer_expression(CortoParser::Initializer_expressionContext *ctx) = 0;

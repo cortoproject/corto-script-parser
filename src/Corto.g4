@@ -26,7 +26,10 @@ statement
     ;
 
 declaration
-    : storage_expression? declaration_identifier initializer_assignment? (scope | eol)
+    : storage_expression declaration_identifier initializer_assignment? (scope | eol)
+    | declaration_identifier initializer_shorthand eol
+    | declaration_identifier initializer_assignment scope
+    | declaration_identifier scope
     ;
 
 declaration_identifier
@@ -37,7 +40,6 @@ declaration_identifier
 
 argument_declaration
     : LPAREN argument (',' argument)* RPAREN
-    | LPAREN RPAREN
     ;
 
 argument
@@ -45,7 +47,11 @@ argument
     ;
 
 scope
-    : '{' statements '}'
+    : '{' default_scope_type? statements '}'
+    ;
+
+default_scope_type
+    : '|' storage_expression '|'
     ;
 
 expression
@@ -155,7 +161,11 @@ storage_expression
 
 initializer_assignment
     : initializer_expression
-    | ':' initializer_list
+    | initializer_shorthand
+    ;
+
+initializer_shorthand
+    : ':' initializer_list
     ;
 
 initializer_expression

@@ -47,6 +47,10 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual antlrcpp::Any visitDefault_scope_type(CortoParser::Default_scope_typeContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual antlrcpp::Any visitExpression(CortoParser::ExpressionContext *ctx) override {
     return visitChildren(ctx);
   }
@@ -148,6 +152,10 @@ public:
   }
 
   virtual antlrcpp::Any visitInitializer_assignment(CortoParser::Initializer_assignmentContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitInitializer_shorthand(CortoParser::Initializer_shorthandContext *ctx) override {
     return visitChildren(ctx);
   }
 
