@@ -3822,16 +3822,16 @@ tree::TerminalNode* CortoParser::LiteralContext::HEXADECIMAL() {
   return getToken(CortoParser::HEXADECIMAL, 0);
 }
 
+tree::TerminalNode* CortoParser::LiteralContext::FLOATING_POINT_MEASUREMENT() {
+  return getToken(CortoParser::FLOATING_POINT_MEASUREMENT, 0);
+}
+
 tree::TerminalNode* CortoParser::LiteralContext::SIGNED_INTEGER_MEASUREMENT() {
   return getToken(CortoParser::SIGNED_INTEGER_MEASUREMENT, 0);
 }
 
 tree::TerminalNode* CortoParser::LiteralContext::INTEGER_MEASUREMENT() {
   return getToken(CortoParser::INTEGER_MEASUREMENT, 0);
-}
-
-tree::TerminalNode* CortoParser::LiteralContext::FLOATING_POINT_MEASUREMENT() {
-  return getToken(CortoParser::FLOATING_POINT_MEASUREMENT, 0);
 }
 
 tree::TerminalNode* CortoParser::LiteralContext::SIGNED_INTEGER() {

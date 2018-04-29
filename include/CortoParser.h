@@ -820,9 +820,9 @@ public:
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *BOOLEAN();
     antlr4::tree::TerminalNode *HEXADECIMAL();
+    antlr4::tree::TerminalNode *FLOATING_POINT_MEASUREMENT();
     antlr4::tree::TerminalNode *SIGNED_INTEGER_MEASUREMENT();
     antlr4::tree::TerminalNode *INTEGER_MEASUREMENT();
-    antlr4::tree::TerminalNode *FLOATING_POINT_MEASUREMENT();
     antlr4::tree::TerminalNode *SIGNED_INTEGER();
     antlr4::tree::TerminalNode *FLOATING_POINT();
     antlr4::tree::TerminalNode *INTEGER();
