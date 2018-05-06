@@ -147,8 +147,8 @@ unary_operator: '&' | '*' | '+' | '-' | '~' | '!' ;
 postfix_expression
     : primary_expression
     | storage_expression
-    | initializer_expression
     | postfix_expression inc_operator
+    | LPAREN expression RPAREN
     ;
 
 inc_operator: '++' | '--';
@@ -187,6 +187,7 @@ initializer_list
 
 initializer_value
     : initializer_key (initializer_expression | ':' expression)
+    | initializer_expression
     | expression
     ;
 
@@ -198,7 +199,6 @@ initializer_key
 
 primary_expression
     : literal
-    | LPAREN expression RPAREN
     ;
 
 literal

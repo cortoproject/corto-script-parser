@@ -619,7 +619,9 @@ public:
     virtual size_t getRuleIndex() const override;
     Primary_expressionContext *primary_expression();
     Storage_expressionContext *storage_expression();
-    Initializer_expressionContext *initializer_expression();
+    antlr4::tree::TerminalNode *LPAREN();
+    ExpressionContext *expression();
+    antlr4::tree::TerminalNode *RPAREN();
     Postfix_expressionContext *postfix_expression();
     Inc_operatorContext *inc_operator();
 
@@ -801,9 +803,6 @@ public:
     Primary_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     LiteralContext *literal();
-    antlr4::tree::TerminalNode *LPAREN();
-    ExpressionContext *expression();
-    antlr4::tree::TerminalNode *RPAREN();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
