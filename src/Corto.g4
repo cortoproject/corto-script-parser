@@ -142,7 +142,7 @@ unary_expression
     | unary_operator cast_expression
     ;
 
-unary_operator: '&' | '*' | '+' | '-' | '~' | '!' ;
+unary_operator: '&' | '*' | '+' | '-' | '~' | COND_NOT ;
 
 postfix_expression
     : primary_expression
@@ -235,6 +235,11 @@ COND_AND
 COND_OR
     : '||'
     | 'or'
+    ;
+
+COND_NOT
+    : '!'
+    | 'not'
     ;
 
 SCOPE_IDENTIFIER
