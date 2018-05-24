@@ -186,7 +186,7 @@ initializer_list
     ;
 
 initializer_value
-    : initializer_key (initializer_expression | ':' expression)
+    : initializer_key ':' (initializer_expression | expression)
     | initializer_expression
     | expression
     ;
