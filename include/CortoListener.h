@@ -26,8 +26,14 @@ public:
   virtual void enterDeclaration(CortoParser::DeclarationContext *ctx) = 0;
   virtual void exitDeclaration(CortoParser::DeclarationContext *ctx) = 0;
 
+  virtual void enterDeclaration_initializer(CortoParser::Declaration_initializerContext *ctx) = 0;
+  virtual void exitDeclaration_initializer(CortoParser::Declaration_initializerContext *ctx) = 0;
+
   virtual void enterDeclaration_identifier(CortoParser::Declaration_identifierContext *ctx) = 0;
   virtual void exitDeclaration_identifier(CortoParser::Declaration_identifierContext *ctx) = 0;
+
+  virtual void enterFunction_identifier(CortoParser::Function_identifierContext *ctx) = 0;
+  virtual void exitFunction_identifier(CortoParser::Function_identifierContext *ctx) = 0;
 
   virtual void enterArgument_declaration(CortoParser::Argument_declarationContext *ctx) = 0;
   virtual void exitArgument_declaration(CortoParser::Argument_declarationContext *ctx) = 0;

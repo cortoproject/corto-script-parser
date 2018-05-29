@@ -31,7 +31,15 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual antlrcpp::Any visitDeclaration_initializer(CortoParser::Declaration_initializerContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual antlrcpp::Any visitDeclaration_identifier(CortoParser::Declaration_identifierContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitFunction_identifier(CortoParser::Function_identifierContext *ctx) override {
     return visitChildren(ctx);
   }
 

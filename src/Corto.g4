@@ -26,20 +26,27 @@ statement
     ;
 
 declaration
-    : storage_expression declaration_identifier initializer_assignment? (scope | eol)
-    | declaration_identifier initializer_shorthand eol
-    | declaration_identifier initializer_assignment scope
-    | declaration_identifier scope
+    : storage_expression? declaration_identifier declaration_initializer? (scope | eol)
+    | storage_identifier? function_identifier initializer_shorthand (scope | eol)
+    ;
+
+declaration_initializer
+    : initializer_assignment
+    | initializer_shorthand
     ;
 
 declaration_identifier
-    : storage_identifier argument_declaration?
-    | storage_identifier (',' storage_identifier)+
+    : storage_identifier (',' storage_identifier)*
     | storage_expression (',' storage_expression)+
+    ;
+
+function_identifier
+    : storage_identifier argument_declaration
     ;
 
 argument_declaration
     : LPAREN argument (',' argument)* RPAREN
+    | LPAREN RPAREN
     ;
 
 argument

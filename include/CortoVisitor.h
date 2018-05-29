@@ -27,7 +27,11 @@ public:
 
     virtual antlrcpp::Any visitDeclaration(CortoParser::DeclarationContext *context) = 0;
 
+    virtual antlrcpp::Any visitDeclaration_initializer(CortoParser::Declaration_initializerContext *context) = 0;
+
     virtual antlrcpp::Any visitDeclaration_identifier(CortoParser::Declaration_identifierContext *context) = 0;
+
+    virtual antlrcpp::Any visitFunction_identifier(CortoParser::Function_identifierContext *context) = 0;
 
     virtual antlrcpp::Any visitArgument_declaration(CortoParser::Argument_declarationContext *context) = 0;
 

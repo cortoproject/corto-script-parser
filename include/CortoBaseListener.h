@@ -28,8 +28,14 @@ public:
   virtual void enterDeclaration(CortoParser::DeclarationContext * /*ctx*/) override { }
   virtual void exitDeclaration(CortoParser::DeclarationContext * /*ctx*/) override { }
 
+  virtual void enterDeclaration_initializer(CortoParser::Declaration_initializerContext * /*ctx*/) override { }
+  virtual void exitDeclaration_initializer(CortoParser::Declaration_initializerContext * /*ctx*/) override { }
+
   virtual void enterDeclaration_identifier(CortoParser::Declaration_identifierContext * /*ctx*/) override { }
   virtual void exitDeclaration_identifier(CortoParser::Declaration_identifierContext * /*ctx*/) override { }
+
+  virtual void enterFunction_identifier(CortoParser::Function_identifierContext * /*ctx*/) override { }
+  virtual void exitFunction_identifier(CortoParser::Function_identifierContext * /*ctx*/) override { }
 
   virtual void enterArgument_declaration(CortoParser::Argument_declarationContext * /*ctx*/) override { }
   virtual void exitArgument_declaration(CortoParser::Argument_declarationContext * /*ctx*/) override { }
