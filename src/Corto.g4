@@ -50,7 +50,7 @@ argument_declaration
     ;
 
 argument
-    : storage_expression IDENTIFIER
+    : INOUT? storage_expression REF? IDENTIFIER
     ;
 
 scope
@@ -229,6 +229,12 @@ storage_identifier
 BOOLEAN
     : 'true' | 'false'
     ;
+
+INOUT
+    : 'in' | 'out' | 'inout'
+    ;
+
+REF : '&' ;
 
 NULL_LITERAL
     : 'null'
