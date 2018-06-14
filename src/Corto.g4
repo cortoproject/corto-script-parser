@@ -44,8 +44,8 @@ declaration_identifier
     ;
 
 argument_declaration
-    : LPAREN argument (',' argument)* RPAREN
-    | LPAREN RPAREN
+    : '(' argument (',' argument)* ')'
+    | '(' ')'
     ;
 
 argument
@@ -62,11 +62,11 @@ assignment_expression
     ;
 
 assignment_operator
-    : ASSIGN | '*=' | '/=' | '%=' | '+=' | '-=' | '<<=' | '>>=' | '&=' | '^=' | '|='
+    : '=' | '*=' | '/=' | '%=' | '+=' | '-=' | '<<=' | '>>=' | '&=' | '^=' | '|='
     ;
 
 conditional_expression
-    : logical_or_expression ('?' expression COLON conditional_expression)?
+    : logical_or_expression ('?' expression ':' conditional_expression)?
     ;
 
 logical_or_expression
@@ -131,7 +131,7 @@ multiplicative_operator: '*' | '/' | '%';
 
 cast_expression
     : unary_expression
-    | LPAREN storage_expression RPAREN cast_expression
+    | '(' storage_expression ')' cast_expression
     ;
 
 unary_expression
@@ -146,7 +146,7 @@ postfix_expression
     : literal
     | storage_expression
     | postfix_expression inc_operator
-    | LPAREN expression RPAREN
+    | '(' expression ')'
     ;
 
 inc_operator: '++' | '--';
@@ -154,12 +154,11 @@ inc_operator: '++' | '--';
 storage_expression
     : storage_identifier
     | storage_expression initializer_collection
-    | storage_expression '.' IDENTIFIER
     ;
 
 initializer_assignment
-    : COLON initializer_list
-    | ASSIGN initializer_expression
+    : ':' initializer_list
+    | '=' initializer_expression
     ;
 
 initializer_expression
@@ -168,11 +167,11 @@ initializer_expression
     ;
 
 initializer_composite
-    : LCURLY NL? initializer_list? NL? RCURLY
+    : '{' NL? initializer_list? NL? '}'
     ;
 
 initializer_collection
-    : LBRACK NL? initializer_list? NL? RBRACK
+    : '[' NL? initializer_list? NL? ']'
     ;
 
 initializer_list
@@ -180,14 +179,13 @@ initializer_list
     ;
 
 initializer_value
-    : initializer_key COLON (initializer_expression | expression)
+    : initializer_key ':' (initializer_expression | expression)
     | initializer_expression
     | expression
     ;
 
 initializer_key
-    : IDENTIFIER ('.' IDENTIFIER)*
-    | literal
+    : literal
     | storage_identifier
     | STRING
     ;
@@ -240,14 +238,12 @@ COND_NOT
     | 'not'
     ;
 
-SCOPE_IDENTIFIER
-    : 'root/'
-    | '/' IDENTIFIER ('/' IDENTIFIER)*
-    | IDENTIFIER ('/' IDENTIFIER) +
-    ;
-
 IDENTIFIER
     : LETTER_UNDERSCORE (LETTER_UNDERSCORE | DIGIT)*
+    ;
+
+SCOPE_IDENTIFIER
+    : ('root/' | ('/'? IDENTIFIER ('/' IDENTIFIER)*)) ('.' IDENTIFIER)*
     ;
 
 HEXADECIMAL
@@ -282,16 +278,6 @@ STRING
     : '"' (ESC|~('\\'|'\n'|'"'))* '"'
     | '\'' (ESC|~('\\'|'\n'|'\''))* '\''
     ;
-
-ASSIGN: '=' ;
-COLON : ':' ;
-
-LPAREN: '(' ;
-RPAREN: ')' ;
-LCURLY: '{' ;
-RCURLY: '}' ;
-LBRACK: '[' ;
-RBRACK: ']' ;
 
 eol : NL
     | EOF
