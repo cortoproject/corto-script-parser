@@ -25,29 +25,26 @@ public:
   virtual void enterStatement(CortoParser::StatementContext * /*ctx*/) override { }
   virtual void exitStatement(CortoParser::StatementContext * /*ctx*/) override { }
 
+  virtual void enterScope_statement(CortoParser::Scope_statementContext * /*ctx*/) override { }
+  virtual void exitScope_statement(CortoParser::Scope_statementContext * /*ctx*/) override { }
+
+  virtual void enterScope(CortoParser::ScopeContext * /*ctx*/) override { }
+  virtual void exitScope(CortoParser::ScopeContext * /*ctx*/) override { }
+
   virtual void enterDeclaration(CortoParser::DeclarationContext * /*ctx*/) override { }
   virtual void exitDeclaration(CortoParser::DeclarationContext * /*ctx*/) override { }
 
-  virtual void enterDeclaration_initializer(CortoParser::Declaration_initializerContext * /*ctx*/) override { }
-  virtual void exitDeclaration_initializer(CortoParser::Declaration_initializerContext * /*ctx*/) override { }
+  virtual void enterFunction_identifier(CortoParser::Function_identifierContext * /*ctx*/) override { }
+  virtual void exitFunction_identifier(CortoParser::Function_identifierContext * /*ctx*/) override { }
 
   virtual void enterDeclaration_identifier(CortoParser::Declaration_identifierContext * /*ctx*/) override { }
   virtual void exitDeclaration_identifier(CortoParser::Declaration_identifierContext * /*ctx*/) override { }
-
-  virtual void enterFunction_identifier(CortoParser::Function_identifierContext * /*ctx*/) override { }
-  virtual void exitFunction_identifier(CortoParser::Function_identifierContext * /*ctx*/) override { }
 
   virtual void enterArgument_declaration(CortoParser::Argument_declarationContext * /*ctx*/) override { }
   virtual void exitArgument_declaration(CortoParser::Argument_declarationContext * /*ctx*/) override { }
 
   virtual void enterArgument(CortoParser::ArgumentContext * /*ctx*/) override { }
   virtual void exitArgument(CortoParser::ArgumentContext * /*ctx*/) override { }
-
-  virtual void enterScope(CortoParser::ScopeContext * /*ctx*/) override { }
-  virtual void exitScope(CortoParser::ScopeContext * /*ctx*/) override { }
-
-  virtual void enterDefault_scope_type(CortoParser::Default_scope_typeContext * /*ctx*/) override { }
-  virtual void exitDefault_scope_type(CortoParser::Default_scope_typeContext * /*ctx*/) override { }
 
   virtual void enterExpression(CortoParser::ExpressionContext * /*ctx*/) override { }
   virtual void exitExpression(CortoParser::ExpressionContext * /*ctx*/) override { }
@@ -127,9 +124,6 @@ public:
   virtual void enterInitializer_assignment(CortoParser::Initializer_assignmentContext * /*ctx*/) override { }
   virtual void exitInitializer_assignment(CortoParser::Initializer_assignmentContext * /*ctx*/) override { }
 
-  virtual void enterInitializer_shorthand(CortoParser::Initializer_shorthandContext * /*ctx*/) override { }
-  virtual void exitInitializer_shorthand(CortoParser::Initializer_shorthandContext * /*ctx*/) override { }
-
   virtual void enterInitializer_expression(CortoParser::Initializer_expressionContext * /*ctx*/) override { }
   virtual void exitInitializer_expression(CortoParser::Initializer_expressionContext * /*ctx*/) override { }
 
@@ -147,9 +141,6 @@ public:
 
   virtual void enterInitializer_key(CortoParser::Initializer_keyContext * /*ctx*/) override { }
   virtual void exitInitializer_key(CortoParser::Initializer_keyContext * /*ctx*/) override { }
-
-  virtual void enterPrimary_expression(CortoParser::Primary_expressionContext * /*ctx*/) override { }
-  virtual void exitPrimary_expression(CortoParser::Primary_expressionContext * /*ctx*/) override { }
 
   virtual void enterLiteral(CortoParser::LiteralContext * /*ctx*/) override { }
   virtual void exitLiteral(CortoParser::LiteralContext * /*ctx*/) override { }

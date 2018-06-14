@@ -7,10 +7,6 @@ grammar Corto;
 #endif
 }
 
-@lexer::members {
-    int nesting = 0;
-}
-
 program
     : statements
     ;
@@ -25,23 +21,26 @@ statement
     | declaration
     ;
 
+scope_statement
+    : NL
+    | declaration
+    ;
+
+scope
+    : '{' (scope_statement)* '}'
+    ;
+
 declaration
-    : storage_expression? declaration_identifier declaration_initializer? (scope | eol)
-    | storage_identifier? function_identifier initializer_shorthand (scope | eol)
-    ;
-
-declaration_initializer
-    : initializer_assignment
-    | initializer_shorthand
-    ;
-
-declaration_identifier
-    : storage_identifier (',' storage_identifier)*
-    | storage_expression (',' storage_expression)+
+    : storage_expression? declaration_identifier initializer_assignment? (scope | eol)
+    | storage_expression? function_identifier initializer_list? (scope | eol)
     ;
 
 function_identifier
     : storage_identifier argument_declaration
+    ;
+
+declaration_identifier
+    : storage_identifier (',' storage_identifier)*
     ;
 
 argument_declaration
@@ -51,14 +50,6 @@ argument_declaration
 
 argument
     : INOUT? storage_expression REF? IDENTIFIER
-    ;
-
-scope
-    : '{' default_scope_type? statements '}'
-    ;
-
-default_scope_type
-    : '|' storage_expression '|'
     ;
 
 expression
@@ -71,11 +62,11 @@ assignment_expression
     ;
 
 assignment_operator
-    : '=' | '*=' | '/=' | '%=' | '+=' | '-=' | '<<=' | '>>=' | '&=' | '^=' | '|='
+    : ASSIGN | '*=' | '/=' | '%=' | '+=' | '-=' | '<<=' | '>>=' | '&=' | '^=' | '|='
     ;
 
 conditional_expression
-    : logical_or_expression ('?' expression ':' conditional_expression)?
+    : logical_or_expression ('?' expression COLON conditional_expression)?
     ;
 
 logical_or_expression
@@ -152,7 +143,7 @@ unary_expression
 unary_operator: '&' | '*' | '+' | '-' | '~' | COND_NOT ;
 
 postfix_expression
-    : primary_expression
+    : literal
     | storage_expression
     | postfix_expression inc_operator
     | LPAREN expression RPAREN
@@ -162,17 +153,13 @@ inc_operator: '++' | '--';
 
 storage_expression
     : storage_identifier
-    | storage_expression initializer_expression
+    | storage_expression initializer_collection
     | storage_expression '.' IDENTIFIER
     ;
 
 initializer_assignment
-    : initializer_expression
-    | initializer_shorthand
-    ;
-
-initializer_shorthand
-    : ':' initializer_list
+    : COLON initializer_list
+    | ASSIGN initializer_expression
     ;
 
 initializer_expression
@@ -181,19 +168,19 @@ initializer_expression
     ;
 
 initializer_composite
-    : LPAREN initializer_list? RPAREN
+    : LCURLY NL? initializer_list? NL? RCURLY
     ;
 
 initializer_collection
-    : LBRACK initializer_list? RBRACK
+    : LBRACK NL? initializer_list? NL? RBRACK
     ;
 
 initializer_list
-    : initializer_value (',' initializer_value)*
+    : initializer_value (',' NL? initializer_value)*
     ;
 
 initializer_value
-    : initializer_key ':' (initializer_expression | expression)
+    : initializer_key COLON (initializer_expression | expression)
     | initializer_expression
     | expression
     ;
@@ -202,10 +189,7 @@ initializer_key
     : IDENTIFIER ('.' IDENTIFIER)*
     | literal
     | storage_identifier
-    ;
-
-primary_expression
-    : literal
+    | STRING
     ;
 
 literal
@@ -224,6 +208,7 @@ literal
 storage_identifier
     : IDENTIFIER
     | SCOPE_IDENTIFIER
+    | '<' initializer_list '>'
     ;
 
 BOOLEAN
@@ -298,14 +283,15 @@ STRING
     | '\'' (ESC|~('\\'|'\n'|'\''))* '\''
     ;
 
-LPAREN : '(' {nesting ++;} ;
-RPAREN : ')' {nesting --;} ;
-LBRACK : '[' {nesting ++;} ;
-RBRACK : ']' {nesting --;} ;
+ASSIGN: '=' ;
+COLON : ':' ;
 
-IGNORE_NEWLINE
-    : '\r'? '\n' {nesting > 0}? -> skip
-    ;
+LPAREN: '(' ;
+RPAREN: ')' ;
+LCURLY: '{' ;
+RCURLY: '}' ;
+LBRACK: '[' ;
+RBRACK: ']' ;
 
 eol : NL
     | EOF

@@ -25,21 +25,19 @@ public:
 
     virtual antlrcpp::Any visitStatement(CortoParser::StatementContext *context) = 0;
 
+    virtual antlrcpp::Any visitScope_statement(CortoParser::Scope_statementContext *context) = 0;
+
+    virtual antlrcpp::Any visitScope(CortoParser::ScopeContext *context) = 0;
+
     virtual antlrcpp::Any visitDeclaration(CortoParser::DeclarationContext *context) = 0;
 
-    virtual antlrcpp::Any visitDeclaration_initializer(CortoParser::Declaration_initializerContext *context) = 0;
+    virtual antlrcpp::Any visitFunction_identifier(CortoParser::Function_identifierContext *context) = 0;
 
     virtual antlrcpp::Any visitDeclaration_identifier(CortoParser::Declaration_identifierContext *context) = 0;
-
-    virtual antlrcpp::Any visitFunction_identifier(CortoParser::Function_identifierContext *context) = 0;
 
     virtual antlrcpp::Any visitArgument_declaration(CortoParser::Argument_declarationContext *context) = 0;
 
     virtual antlrcpp::Any visitArgument(CortoParser::ArgumentContext *context) = 0;
-
-    virtual antlrcpp::Any visitScope(CortoParser::ScopeContext *context) = 0;
-
-    virtual antlrcpp::Any visitDefault_scope_type(CortoParser::Default_scope_typeContext *context) = 0;
 
     virtual antlrcpp::Any visitExpression(CortoParser::ExpressionContext *context) = 0;
 
@@ -93,8 +91,6 @@ public:
 
     virtual antlrcpp::Any visitInitializer_assignment(CortoParser::Initializer_assignmentContext *context) = 0;
 
-    virtual antlrcpp::Any visitInitializer_shorthand(CortoParser::Initializer_shorthandContext *context) = 0;
-
     virtual antlrcpp::Any visitInitializer_expression(CortoParser::Initializer_expressionContext *context) = 0;
 
     virtual antlrcpp::Any visitInitializer_composite(CortoParser::Initializer_compositeContext *context) = 0;
@@ -106,8 +102,6 @@ public:
     virtual antlrcpp::Any visitInitializer_value(CortoParser::Initializer_valueContext *context) = 0;
 
     virtual antlrcpp::Any visitInitializer_key(CortoParser::Initializer_keyContext *context) = 0;
-
-    virtual antlrcpp::Any visitPrimary_expression(CortoParser::Primary_expressionContext *context) = 0;
 
     virtual antlrcpp::Any visitLiteral(CortoParser::LiteralContext *context) = 0;
 
