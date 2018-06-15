@@ -29,6 +29,10 @@ public:
 
     virtual antlrcpp::Any visitScope(CortoParser::ScopeContext *context) = 0;
 
+    virtual antlrcpp::Any visitUse_statement(CortoParser::Use_statementContext *context) = 0;
+
+    virtual antlrcpp::Any visitIn_declaration(CortoParser::In_declarationContext *context) = 0;
+
     virtual antlrcpp::Any visitDeclaration(CortoParser::DeclarationContext *context) = 0;
 
     virtual antlrcpp::Any visitFunction_identifier(CortoParser::Function_identifierContext *context) = 0;
@@ -106,6 +110,8 @@ public:
     virtual antlrcpp::Any visitLiteral(CortoParser::LiteralContext *context) = 0;
 
     virtual antlrcpp::Any visitStorage_identifier(CortoParser::Storage_identifierContext *context) = 0;
+
+    virtual antlrcpp::Any visitInout(CortoParser::InoutContext *context) = 0;
 
     virtual antlrcpp::Any visitEol(CortoParser::EolContext *context) = 0;
 

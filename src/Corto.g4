@@ -18,6 +18,8 @@ statements
 statement
     : NL
     | expression eol
+    | use_statement
+    | in_declaration
     | declaration
     ;
 
@@ -28,6 +30,15 @@ scope_statement
 
 scope
     : '{' (scope_statement)* '}'
+    ;
+
+use_statement
+    : USE TYPESYSTEM? storage_identifier
+    | USE storage_identifier (AS storage_identifier)?
+    ;
+
+in_declaration
+    : IN declaration
     ;
 
 declaration
@@ -49,7 +60,7 @@ argument_declaration
     ;
 
 argument
-    : INOUT? storage_expression REF? IDENTIFIER
+    : inout? storage_expression REF? IDENTIFIER
     ;
 
 expression
@@ -213,9 +224,17 @@ BOOLEAN
     : 'true' | 'false'
     ;
 
-INOUT
-    : 'in' | 'out' | 'inout'
+inout
+    : IN | 'out' | 'inout'
     ;
+
+IN : 'in' ;
+
+USE : 'use' ;
+
+AS : 'as' ;
+
+TYPESYSTEM : 'typesystem' ;
 
 REF : '&' ;
 
