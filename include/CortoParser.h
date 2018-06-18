@@ -146,8 +146,6 @@ public:
     StatementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *NL();
-    ExpressionContext *expression();
-    EolContext *eol();
     Use_statementContext *use_statement();
     In_declarationContext *in_declaration();
     DeclarationContext *declaration();
@@ -232,11 +230,12 @@ public:
   public:
     DeclarationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
+    Storage_expressionContext *storage_expression();
     Declaration_identifierContext *declaration_identifier();
     ScopeContext *scope();
     EolContext *eol();
-    Storage_expressionContext *storage_expression();
     Initializer_assignmentContext *initializer_assignment();
+    antlr4::tree::TerminalNode *NL();
     Function_identifierContext *function_identifier();
     Initializer_listContext *initializer_list();
 
@@ -271,6 +270,8 @@ public:
     virtual size_t getRuleIndex() const override;
     std::vector<Storage_identifierContext *> storage_identifier();
     Storage_identifierContext* storage_identifier(size_t i);
+    std::vector<antlr4::tree::TerminalNode *> NL();
+    antlr4::tree::TerminalNode* NL(size_t i);
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;

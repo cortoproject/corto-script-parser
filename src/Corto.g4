@@ -17,7 +17,6 @@ statements
 
 statement
     : NL
-    | expression eol
     | use_statement
     | in_declaration
     | declaration
@@ -42,8 +41,12 @@ in_declaration
     ;
 
 declaration
-    : storage_expression? declaration_identifier initializer_assignment? (scope | eol)
-    | storage_expression? function_identifier initializer_list? (scope | eol)
+    : storage_expression declaration_identifier initializer_assignment? (scope | eol)
+    | (storage_expression NL)? declaration_identifier initializer_assignment (scope | eol)
+    | storage_expression function_identifier initializer_list? (scope | eol)
+    | (storage_expression NL)? function_identifier initializer_list (scope | eol)
+    | declaration_identifier (scope | eol)
+    | function_identifier (scope | eol)
     ;
 
 function_identifier
@@ -51,7 +54,7 @@ function_identifier
     ;
 
 declaration_identifier
-    : storage_identifier (',' storage_identifier)*
+    : storage_identifier (',' NL? storage_identifier)*
     ;
 
 argument_declaration
