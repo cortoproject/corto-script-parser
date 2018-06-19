@@ -27,19 +27,11 @@ public:
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitScope_statement(CortoParser::Scope_statementContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual antlrcpp::Any visitScope(CortoParser::ScopeContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
   virtual antlrcpp::Any visitUse_statement(CortoParser::Use_statementContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitIn_declaration(CortoParser::In_declarationContext *ctx) override {
+  virtual antlrcpp::Any visitScope(CortoParser::ScopeContext *ctx) override {
     return visitChildren(ctx);
   }
 

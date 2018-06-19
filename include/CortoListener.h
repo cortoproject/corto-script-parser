@@ -23,17 +23,11 @@ public:
   virtual void enterStatement(CortoParser::StatementContext *ctx) = 0;
   virtual void exitStatement(CortoParser::StatementContext *ctx) = 0;
 
-  virtual void enterScope_statement(CortoParser::Scope_statementContext *ctx) = 0;
-  virtual void exitScope_statement(CortoParser::Scope_statementContext *ctx) = 0;
-
-  virtual void enterScope(CortoParser::ScopeContext *ctx) = 0;
-  virtual void exitScope(CortoParser::ScopeContext *ctx) = 0;
-
   virtual void enterUse_statement(CortoParser::Use_statementContext *ctx) = 0;
   virtual void exitUse_statement(CortoParser::Use_statementContext *ctx) = 0;
 
-  virtual void enterIn_declaration(CortoParser::In_declarationContext *ctx) = 0;
-  virtual void exitIn_declaration(CortoParser::In_declarationContext *ctx) = 0;
+  virtual void enterScope(CortoParser::ScopeContext *ctx) = 0;
+  virtual void exitScope(CortoParser::ScopeContext *ctx) = 0;
 
   virtual void enterDeclaration(CortoParser::DeclarationContext *ctx) = 0;
   virtual void exitDeclaration(CortoParser::DeclarationContext *ctx) = 0;

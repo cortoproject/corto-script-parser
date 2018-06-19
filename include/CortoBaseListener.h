@@ -25,17 +25,11 @@ public:
   virtual void enterStatement(CortoParser::StatementContext * /*ctx*/) override { }
   virtual void exitStatement(CortoParser::StatementContext * /*ctx*/) override { }
 
-  virtual void enterScope_statement(CortoParser::Scope_statementContext * /*ctx*/) override { }
-  virtual void exitScope_statement(CortoParser::Scope_statementContext * /*ctx*/) override { }
-
-  virtual void enterScope(CortoParser::ScopeContext * /*ctx*/) override { }
-  virtual void exitScope(CortoParser::ScopeContext * /*ctx*/) override { }
-
   virtual void enterUse_statement(CortoParser::Use_statementContext * /*ctx*/) override { }
   virtual void exitUse_statement(CortoParser::Use_statementContext * /*ctx*/) override { }
 
-  virtual void enterIn_declaration(CortoParser::In_declarationContext * /*ctx*/) override { }
-  virtual void exitIn_declaration(CortoParser::In_declarationContext * /*ctx*/) override { }
+  virtual void enterScope(CortoParser::ScopeContext * /*ctx*/) override { }
+  virtual void exitScope(CortoParser::ScopeContext * /*ctx*/) override { }
 
   virtual void enterDeclaration(CortoParser::DeclarationContext * /*ctx*/) override { }
   virtual void exitDeclaration(CortoParser::DeclarationContext * /*ctx*/) override { }

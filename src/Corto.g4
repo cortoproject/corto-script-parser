@@ -7,28 +7,27 @@ grammar Corto;
 #endif
 }
 
+/* A program may contain exactly one IN declaration, which indicates the scope in
+ * which the declarations in the program will be stored. A program needs to end
+ * with EOF to ensure the whole program has been parsed.
+ * IN declarations may appear by themselves.*/
+
 program
-    : statements
+    : (IN declaration eol+)? statements EOF
+    | IN declaration eol* EOF
     ;
 
+/* A scope consists out of one or more statements, followed by an end of line
+ * (either ';' or '\n'). The last statement in a scope may appear without an
+ * end of line, to let the parser accept strings that do not end with eol's */
+
 statements
-    : (statement)*
+    : NL* (statement eol+)* statement?
     ;
 
 statement
-    : NL
-    | use_statement
-    | in_declaration
+    : use_statement
     | declaration
-    ;
-
-scope_statement
-    : NL
-    | declaration
-    ;
-
-scope
-    : '{' (scope_statement)* '}'
     ;
 
 use_statement
@@ -36,17 +35,21 @@ use_statement
     | USE storage_identifier (AS storage_identifier)?
     ;
 
-in_declaration
-    : IN declaration
+/* Nested scopes must be surrounded by curly braces. Nested scopes can only
+ * occur after a declaration. At most one newline may separate a declaration
+ * from a nested scope. */
+
+scope
+    : NL? '{' statements '}'
     ;
 
 declaration
-    : storage_expression declaration_identifier initializer_assignment? (scope | eol)
-    | (storage_expression NL)? declaration_identifier initializer_assignment (scope | eol)
-    | storage_expression function_identifier initializer_list? (scope | eol)
-    | (storage_expression NL)? function_identifier initializer_list (scope | eol)
-    | declaration_identifier (scope | eol)
-    | function_identifier (scope | eol)
+    : storage_expression declaration_identifier initializer_assignment? scope?
+    | storage_expression function_identifier initializer_list? scope?
+    | (storage_expression NL)? declaration_identifier initializer_assignment scope?
+    | (storage_expression NL)? function_identifier initializer_list scope?
+    | declaration_identifier scope?
+    | function_identifier scope?
     ;
 
 function_identifier
@@ -261,7 +264,7 @@ COND_NOT
     ;
 
 IDENTIFIER
-    : LETTER_UNDERSCORE (LETTER_UNDERSCORE | DIGIT)*
+    : '$'? LETTER_UNDERSCORE (LETTER_UNDERSCORE | DIGIT)*
     ;
 
 SCOPE_IDENTIFIER
@@ -302,7 +305,6 @@ STRING
     ;
 
 eol : NL
-    | EOF
     | ';'
     ;
 
@@ -310,6 +312,14 @@ NL  : '\r'? '\n'
     ;
 
 WS: [ \t\r]+ -> skip;
+
+COMMENT
+    : '/*' .*? '*/' -> skip
+    ;
+
+LINE_COMMENT
+    : '//' ~[\r\n]* -> skip
+    ;
 
 fragment ESC
     : '\\' .
