@@ -46,8 +46,8 @@ scope
 declaration
     : storage_expression declaration_identifier initializer_assignment? scope?
     | storage_expression function_identifier initializer_list? scope?
-    | (storage_expression NL)? declaration_identifier initializer_assignment scope?
-    | (storage_expression NL)? function_identifier initializer_list scope?
+    | (storage_expression NL+)? declaration_identifier initializer_assignment scope?
+    | (storage_expression NL+)? function_identifier initializer_list scope?
     | declaration_identifier scope?
     | function_identifier scope?
     ;
@@ -61,7 +61,7 @@ declaration_identifier
     ;
 
 argument_declaration
-    : '(' argument (',' argument)* ')'
+    : '(' NL? argument (',' NL? argument)* ')'
     | '(' ')'
     ;
 
