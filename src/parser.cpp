@@ -13,7 +13,9 @@ int cortomain(int argc, char *argv[]) {
     int result = 0;
 
     if (argc > 1) {
-        if (corto_file_test(argv[1])) {
+        FILE *f = fopen(argv[1], "r");
+        if (f) fclose(f);
+        if (f) {
             try {
                 ANTLRFileStream input(argv[1]);
                 CortoLexer lexer(&input);
@@ -21,12 +23,12 @@ int cortomain(int argc, char *argv[]) {
                 tokens.fill();
                 for (auto token : tokens.getTokens()) {
                     std::cout << token->toString() << std::endl;
-                }                
+                }
                 CortoParser parser(&tokens);
                 tree::ParseTree* tree = parser.program();
                 std::cout << tree->toStringTree(&parser) << std::endl << std::endl;
             } catch(std::exception &e) {
-                corto_throw("failed to parse file '%s'", argv[1]);
+                printf("failed to parse file '%s'\n", argv[1]);
                 result = -1;
             }
         } else {
