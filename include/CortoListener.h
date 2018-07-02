@@ -17,11 +17,17 @@ public:
   virtual void enterProgram(CortoParser::ProgramContext *ctx) = 0;
   virtual void exitProgram(CortoParser::ProgramContext *ctx) = 0;
 
+  virtual void enterIn_statement(CortoParser::In_statementContext *ctx) = 0;
+  virtual void exitIn_statement(CortoParser::In_statementContext *ctx) = 0;
+
   virtual void enterStatements(CortoParser::StatementsContext *ctx) = 0;
   virtual void exitStatements(CortoParser::StatementsContext *ctx) = 0;
 
   virtual void enterStatement(CortoParser::StatementContext *ctx) = 0;
   virtual void exitStatement(CortoParser::StatementContext *ctx) = 0;
+
+  virtual void enterSimple_statement(CortoParser::Simple_statementContext *ctx) = 0;
+  virtual void exitSimple_statement(CortoParser::Simple_statementContext *ctx) = 0;
 
   virtual void enterUse_statement(CortoParser::Use_statementContext *ctx) = 0;
   virtual void exitUse_statement(CortoParser::Use_statementContext *ctx) = 0;
@@ -29,14 +35,20 @@ public:
   virtual void enterScope(CortoParser::ScopeContext *ctx) = 0;
   virtual void exitScope(CortoParser::ScopeContext *ctx) = 0;
 
+  virtual void enterIdentifier_statement(CortoParser::Identifier_statementContext *ctx) = 0;
+  virtual void exitIdentifier_statement(CortoParser::Identifier_statementContext *ctx) = 0;
+
   virtual void enterDeclaration(CortoParser::DeclarationContext *ctx) = 0;
   virtual void exitDeclaration(CortoParser::DeclarationContext *ctx) = 0;
 
-  virtual void enterFunction_identifier(CortoParser::Function_identifierContext *ctx) = 0;
-  virtual void exitFunction_identifier(CortoParser::Function_identifierContext *ctx) = 0;
-
   virtual void enterDeclaration_identifier(CortoParser::Declaration_identifierContext *ctx) = 0;
   virtual void exitDeclaration_identifier(CortoParser::Declaration_identifierContext *ctx) = 0;
+
+  virtual void enterDeclaration_identifier_list(CortoParser::Declaration_identifier_listContext *ctx) = 0;
+  virtual void exitDeclaration_identifier_list(CortoParser::Declaration_identifier_listContext *ctx) = 0;
+
+  virtual void enterFunction_identifier(CortoParser::Function_identifierContext *ctx) = 0;
+  virtual void exitFunction_identifier(CortoParser::Function_identifierContext *ctx) = 0;
 
   virtual void enterArgument_declaration(CortoParser::Argument_declarationContext *ctx) = 0;
   virtual void exitArgument_declaration(CortoParser::Argument_declarationContext *ctx) = 0;

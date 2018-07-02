@@ -19,11 +19,17 @@ public:
   virtual void enterProgram(CortoParser::ProgramContext * /*ctx*/) override { }
   virtual void exitProgram(CortoParser::ProgramContext * /*ctx*/) override { }
 
+  virtual void enterIn_statement(CortoParser::In_statementContext * /*ctx*/) override { }
+  virtual void exitIn_statement(CortoParser::In_statementContext * /*ctx*/) override { }
+
   virtual void enterStatements(CortoParser::StatementsContext * /*ctx*/) override { }
   virtual void exitStatements(CortoParser::StatementsContext * /*ctx*/) override { }
 
   virtual void enterStatement(CortoParser::StatementContext * /*ctx*/) override { }
   virtual void exitStatement(CortoParser::StatementContext * /*ctx*/) override { }
+
+  virtual void enterSimple_statement(CortoParser::Simple_statementContext * /*ctx*/) override { }
+  virtual void exitSimple_statement(CortoParser::Simple_statementContext * /*ctx*/) override { }
 
   virtual void enterUse_statement(CortoParser::Use_statementContext * /*ctx*/) override { }
   virtual void exitUse_statement(CortoParser::Use_statementContext * /*ctx*/) override { }
@@ -31,14 +37,20 @@ public:
   virtual void enterScope(CortoParser::ScopeContext * /*ctx*/) override { }
   virtual void exitScope(CortoParser::ScopeContext * /*ctx*/) override { }
 
+  virtual void enterIdentifier_statement(CortoParser::Identifier_statementContext * /*ctx*/) override { }
+  virtual void exitIdentifier_statement(CortoParser::Identifier_statementContext * /*ctx*/) override { }
+
   virtual void enterDeclaration(CortoParser::DeclarationContext * /*ctx*/) override { }
   virtual void exitDeclaration(CortoParser::DeclarationContext * /*ctx*/) override { }
 
-  virtual void enterFunction_identifier(CortoParser::Function_identifierContext * /*ctx*/) override { }
-  virtual void exitFunction_identifier(CortoParser::Function_identifierContext * /*ctx*/) override { }
-
   virtual void enterDeclaration_identifier(CortoParser::Declaration_identifierContext * /*ctx*/) override { }
   virtual void exitDeclaration_identifier(CortoParser::Declaration_identifierContext * /*ctx*/) override { }
+
+  virtual void enterDeclaration_identifier_list(CortoParser::Declaration_identifier_listContext * /*ctx*/) override { }
+  virtual void exitDeclaration_identifier_list(CortoParser::Declaration_identifier_listContext * /*ctx*/) override { }
+
+  virtual void enterFunction_identifier(CortoParser::Function_identifierContext * /*ctx*/) override { }
+  virtual void exitFunction_identifier(CortoParser::Function_identifierContext * /*ctx*/) override { }
 
   virtual void enterArgument_declaration(CortoParser::Argument_declarationContext * /*ctx*/) override { }
   virtual void exitArgument_declaration(CortoParser::Argument_declarationContext * /*ctx*/) override { }

@@ -10,11 +10,15 @@ grammar Corto;
 /* A program may contain exactly one IN declaration, which indicates the scope in
  * which the declarations in the program will be stored. A program needs to end
  * with EOF to ensure the whole program has been parsed.
- * IN declarations may appear by themselves.*/
+ * IN declarations may appear by themselves. */
 
 program
-    : (IN declaration eol+)? statements EOF
-    | IN declaration eol* EOF
+    : (in_statement eol)? statements EOF
+    | in_statement eol* EOF
+    ;
+
+in_statement
+    : IN storage_expression? storage_identifier initializer_assignment?
     ;
 
 /* A scope consists out of one or more statements, followed by an end of line
@@ -22,10 +26,15 @@ program
  * end of line, to let the parser accept strings that do not end with eol's */
 
 statements
-    : NL* (statement eol+)* statement?
+    : NL* statement* simple_statement?
     ;
 
 statement
+    : (identifier_statement eol*)
+    | (simple_statement eol+)
+    ;
+
+simple_statement
     : use_statement
     | declaration
     ;
@@ -43,21 +52,32 @@ scope
     : NL? '{' statements '}'
     ;
 
+/* A single identifier is interpreted as declaration, provided that it is
+ * disambiguated by a ';' */
+
+identifier_statement
+    : storage_identifier ';'
+    ;
+
 declaration
-    : storage_expression declaration_identifier initializer_assignment? scope?
-    | storage_expression function_identifier initializer_list? scope?
+    : declaration_identifier_list scope?
+    | storage_identifier scope
+    | (storage_expression NL?)? function_identifier initializer_list? scope?
     | (storage_expression NL+)? declaration_identifier initializer_assignment scope?
-    | (storage_expression NL+)? function_identifier initializer_list scope?
-    | declaration_identifier scope?
-    | function_identifier scope?
+    | storage_expression declaration_identifier initializer_assignment? scope?
+    ;
+
+declaration_identifier
+    : storage_identifier
+    | declaration_identifier_list
+    ;
+
+declaration_identifier_list
+    : storage_identifier (',' NL? storage_identifier)+
     ;
 
 function_identifier
     : storage_identifier argument_declaration
-    ;
-
-declaration_identifier
-    : storage_identifier (',' NL? storage_identifier)*
     ;
 
 argument_declaration
@@ -196,9 +216,9 @@ initializer_list
     ;
 
 initializer_value
-    : initializer_key ':' (initializer_expression | expression)
+    : initializer_key ':' (initializer_expression | conditional_expression)
     | initializer_expression
-    | expression
+    | conditional_expression
     ;
 
 initializer_key

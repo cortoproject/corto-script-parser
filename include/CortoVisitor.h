@@ -21,19 +21,27 @@ public:
    */
     virtual antlrcpp::Any visitProgram(CortoParser::ProgramContext *context) = 0;
 
+    virtual antlrcpp::Any visitIn_statement(CortoParser::In_statementContext *context) = 0;
+
     virtual antlrcpp::Any visitStatements(CortoParser::StatementsContext *context) = 0;
 
     virtual antlrcpp::Any visitStatement(CortoParser::StatementContext *context) = 0;
+
+    virtual antlrcpp::Any visitSimple_statement(CortoParser::Simple_statementContext *context) = 0;
 
     virtual antlrcpp::Any visitUse_statement(CortoParser::Use_statementContext *context) = 0;
 
     virtual antlrcpp::Any visitScope(CortoParser::ScopeContext *context) = 0;
 
+    virtual antlrcpp::Any visitIdentifier_statement(CortoParser::Identifier_statementContext *context) = 0;
+
     virtual antlrcpp::Any visitDeclaration(CortoParser::DeclarationContext *context) = 0;
 
-    virtual antlrcpp::Any visitFunction_identifier(CortoParser::Function_identifierContext *context) = 0;
-
     virtual antlrcpp::Any visitDeclaration_identifier(CortoParser::Declaration_identifierContext *context) = 0;
+
+    virtual antlrcpp::Any visitDeclaration_identifier_list(CortoParser::Declaration_identifier_listContext *context) = 0;
+
+    virtual antlrcpp::Any visitFunction_identifier(CortoParser::Function_identifierContext *context) = 0;
 
     virtual antlrcpp::Any visitArgument_declaration(CortoParser::Argument_declarationContext *context) = 0;
 

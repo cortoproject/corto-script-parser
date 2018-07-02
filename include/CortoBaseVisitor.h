@@ -19,11 +19,19 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual antlrcpp::Any visitIn_statement(CortoParser::In_statementContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual antlrcpp::Any visitStatements(CortoParser::StatementsContext *ctx) override {
     return visitChildren(ctx);
   }
 
   virtual antlrcpp::Any visitStatement(CortoParser::StatementContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitSimple_statement(CortoParser::Simple_statementContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -35,15 +43,23 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual antlrcpp::Any visitIdentifier_statement(CortoParser::Identifier_statementContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual antlrcpp::Any visitDeclaration(CortoParser::DeclarationContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitFunction_identifier(CortoParser::Function_identifierContext *ctx) override {
+  virtual antlrcpp::Any visitDeclaration_identifier(CortoParser::Declaration_identifierContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitDeclaration_identifier(CortoParser::Declaration_identifierContext *ctx) override {
+  virtual antlrcpp::Any visitDeclaration_identifier_list(CortoParser::Declaration_identifier_listContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitFunction_identifier(CortoParser::Function_identifierContext *ctx) override {
     return visitChildren(ctx);
   }
 
