@@ -25,11 +25,11 @@ public:
     T__26 = 27, T__27 = 28, T__28 = 29, T__29 = 30, T__30 = 31, T__31 = 32, 
     T__32 = 33, T__33 = 34, T__34 = 35, T__35 = 36, T__36 = 37, T__37 = 38, 
     T__38 = 39, T__39 = 40, T__40 = 41, BOOLEAN = 42, IN = 43, USE = 44, 
-    AS = 45, TYPESYSTEM = 46, REF = 47, NULL_LITERAL = 48, COND_AND = 49, 
-    COND_OR = 50, COND_NOT = 51, IDENTIFIER = 52, SCOPE_IDENTIFIER = 53, 
-    HEXADECIMAL = 54, SIGNED_INTEGER_MEASUREMENT = 55, INTEGER_MEASUREMENT = 56, 
-    FLOATING_POINT_MEASUREMENT = 57, INTEGER = 58, SIGNED_INTEGER = 59, 
-    FLOATING_POINT = 60, STRING = 61, NL = 62, WS = 63, COMMENT = 64, LINE_COMMENT = 65
+    AS = 45, TYPESYSTEM = 46, REF = 47, NULL_LITERAL = 48, NAN_LITERAL = 49, 
+    COND_AND = 50, COND_OR = 51, COND_NOT = 52, IDENTIFIER = 53, SCOPE_IDENTIFIER = 54, 
+    HEXADECIMAL = 55, SIGNED_INTEGER_MEASUREMENT = 56, INTEGER_MEASUREMENT = 57, 
+    FLOATING_POINT_MEASUREMENT = 58, INTEGER = 59, SIGNED_INTEGER = 60, 
+    FLOATING_POINT = 61, STRING = 62, NL = 63, WS = 64, COMMENT = 65, LINE_COMMENT = 66
   };
 
   enum {
@@ -118,9 +118,10 @@ public:
     virtual size_t getRuleIndex() const override;
     StatementsContext *statements();
     antlr4::tree::TerminalNode *EOF();
+    std::vector<antlr4::tree::TerminalNode *> NL();
+    antlr4::tree::TerminalNode* NL(size_t i);
     In_statementContext *in_statement();
-    std::vector<EolContext *> eol();
-    EolContext* eol(size_t i);
+    EolContext *eol();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -153,8 +154,6 @@ public:
   public:
     StatementsContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    std::vector<antlr4::tree::TerminalNode *> NL();
-    antlr4::tree::TerminalNode* NL(size_t i);
     std::vector<StatementContext *> statement();
     StatementContext* statement(size_t i);
     Simple_statementContext *simple_statement();
@@ -173,9 +172,9 @@ public:
     StatementContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     Identifier_statementContext *identifier_statement();
-    std::vector<EolContext *> eol();
-    EolContext* eol(size_t i);
+    EolContext *eol();
     Simple_statementContext *simple_statement();
+    antlr4::tree::TerminalNode *NL();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -896,6 +895,7 @@ public:
     antlr4::tree::TerminalNode *INTEGER();
     antlr4::tree::TerminalNode *STRING();
     antlr4::tree::TerminalNode *NULL_LITERAL();
+    antlr4::tree::TerminalNode *NAN_LITERAL();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;

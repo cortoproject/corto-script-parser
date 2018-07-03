@@ -13,8 +13,8 @@ grammar Corto;
  * IN declarations may appear by themselves. */
 
 program
-    : (in_statement eol)? statements EOF
-    | in_statement eol* EOF
+    : NL* (in_statement eol)? statements EOF
+    | NL* in_statement eol? NL* EOF
     ;
 
 in_statement
@@ -26,12 +26,13 @@ in_statement
  * end of line, to let the parser accept strings that do not end with eol's */
 
 statements
-    : NL* statement* simple_statement?
+    : statement* simple_statement?
     ;
 
 statement
-    : (identifier_statement eol*)
-    | (simple_statement eol+)
+    : (identifier_statement eol?)
+    | (simple_statement eol)
+    | NL
     ;
 
 simple_statement
@@ -62,7 +63,7 @@ identifier_statement
 declaration
     : declaration_identifier_list scope?
     | storage_identifier scope
-    | (storage_expression NL?)? function_identifier initializer_list? scope?
+    | (storage_expression NL*)? function_identifier initializer_list? scope?
     | (storage_expression NL+)? declaration_identifier initializer_assignment scope?
     | storage_expression declaration_identifier initializer_assignment? scope?
     ;
@@ -238,6 +239,7 @@ literal
     | INTEGER
     | STRING
     | NULL_LITERAL
+    | NAN_LITERAL
     ;
 
 storage_identifier
@@ -266,6 +268,10 @@ REF : '&' ;
 
 NULL_LITERAL
     : 'null'
+    ;
+
+NAN_LITERAL
+    : 'nan'
     ;
 
 COND_AND

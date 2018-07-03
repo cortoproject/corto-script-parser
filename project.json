@@ -5,7 +5,7 @@
         "description": "Making the world a better place",
         "author": "Arthur Dent",
         "version": "1.0.0",
-        "language": null,
+        "language": "c",
         "c4cpp": true,
         "managed": false,
         "use": ["antlr4/cpp"],
