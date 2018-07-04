@@ -50,7 +50,7 @@ use_statement
  * from a nested scope. */
 
 scope
-    : NL? '{' statements '}'
+    : NL* '{' statements '}'
     ;
 
 /* A single identifier is interpreted as declaration, provided that it is
@@ -74,7 +74,7 @@ declaration_identifier
     ;
 
 declaration_identifier_list
-    : storage_identifier (',' NL? storage_identifier)+
+    : storage_identifier (',' NL* storage_identifier)+
     ;
 
 function_identifier
@@ -82,7 +82,7 @@ function_identifier
     ;
 
 argument_declaration
-    : '(' NL? argument (',' NL? argument)* ')'
+    : '(' NL* argument (',' NL* argument)* ')'
     | '(' ')'
     ;
 
@@ -205,15 +205,15 @@ initializer_expression
     ;
 
 initializer_composite
-    : '{' NL? initializer_list? NL? '}'
+    : '{' NL* initializer_list? NL* '}'
     ;
 
 initializer_collection
-    : '[' NL? initializer_list? NL? ']'
+    : '[' NL* initializer_list? NL* ']'
     ;
 
 initializer_list
-    : initializer_value (',' NL? initializer_value)*
+    : initializer_value (',' NL* initializer_value)*
     ;
 
 initializer_value
