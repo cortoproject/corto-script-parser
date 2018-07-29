@@ -9,7 +9,15 @@
         "c4cpp": true,
         "managed": false,
         "keep_binary": true,
+        "${os linux}": {
+            "static_artefact": true
+        },
         "use": ["antlr4/cpp"],
-        "include": ["${locate include}"]
+        "include": ["${locate include}"],
+        "dependee": {
+            "${os linux}": {
+                "static_lib": ["corto_script_parser"]
+            }
+        }
     }
 }
