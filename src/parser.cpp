@@ -8,6 +8,7 @@
 
 using namespace antlr4;
 
+/*
 extern "C"
 int cortomain(int argc, char *argv[]) {
     int result = 0;
@@ -47,3 +48,4 @@ int cortomain(int argc, char *argv[]) {
 
     return result;
 }
+*/
