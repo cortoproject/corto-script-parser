@@ -29,7 +29,8 @@ public:
     COND_AND = 50, COND_OR = 51, COND_NOT = 52, IDENTIFIER = 53, SCOPE_IDENTIFIER = 54, 
     HEXADECIMAL = 55, SIGNED_INTEGER_MEASUREMENT = 56, INTEGER_MEASUREMENT = 57, 
     FLOATING_POINT_MEASUREMENT = 58, INTEGER = 59, SIGNED_INTEGER = 60, 
-    FLOATING_POINT = 61, STRING = 62, NL = 63, WS = 64, COMMENT = 65, LINE_COMMENT = 66
+    FLOATING_POINT = 61, STRING = 62, NL = 63, WS = 64, TIME = 65, COMMENT = 66, 
+    LINE_COMMENT = 67
   };
 
   enum {
@@ -191,6 +192,7 @@ public:
     virtual size_t getRuleIndex() const override;
     Use_statementContext *use_statement();
     DeclarationContext *declaration();
+    antlr4::tree::TerminalNode *TIME();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;

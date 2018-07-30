@@ -37,7 +37,7 @@ statement
 
 simple_statement
     : use_statement
-    | declaration
+    | TIME? declaration
     ;
 
 use_statement
@@ -338,6 +338,11 @@ NL  : '\r'? '\n'
     ;
 
 WS: [ \t\r]+ -> skip;
+
+TIME
+    : '[' DIGIT DIGIT DIGIT DIGIT '-' DIGIT DIGIT '-' DIGIT DIGIT ' ' DIGIT ':' DIGIT ':' DIGIT ('.' DIGIT*)? ' ' LETTER* ']'
+    | '[' DIGIT* '.' DIGIT* ']'
+    ;
 
 COMMENT
     : '/*' .*? '*/' -> skip
