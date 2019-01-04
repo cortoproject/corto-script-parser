@@ -48,8 +48,8 @@ public:
     RuleUnary_operator = 35, RulePostfix_expression = 36, RuleInc_operator = 37, 
     RuleStorage_expression = 38, RuleInitializer_assignment = 39, RuleInitializer_expression = 40, 
     RuleInitializer_composite = 41, RuleInitializer_collection = 42, RuleInitializer_list = 43, 
-    RuleInitializer_value = 44, RuleInitializer_key = 45, RuleLiteral = 46, 
-    RuleStorage_identifier = 47, RuleInout = 48, RuleEol = 49
+    RuleInitializer_value_expression = 44, RuleInitializer_value = 45, RuleInitializer_key = 46, 
+    RuleLiteral = 47, RuleStorage_identifier = 48, RuleInout = 49, RuleEol = 50
   };
 
   CortoParser(antlr4::TokenStream *input);
@@ -106,6 +106,7 @@ public:
   class Initializer_compositeContext;
   class Initializer_collectionContext;
   class Initializer_listContext;
+  class Initializer_value_expressionContext;
   class Initializer_valueContext;
   class Initializer_keyContext;
   class LiteralContext;
@@ -850,13 +851,32 @@ public:
 
   Initializer_listContext* initializer_list();
 
+  class  Initializer_value_expressionContext : public antlr4::ParserRuleContext {
+  public:
+    Initializer_value_expressionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    Conditional_expressionContext *conditional_expression();
+    InoutContext *inout();
+    antlr4::tree::TerminalNode *USE();
+    antlr4::tree::TerminalNode *AS();
+    antlr4::tree::TerminalNode *TYPESYSTEM();
+
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
+  };
+
+  Initializer_value_expressionContext* initializer_value_expression();
+
   class  Initializer_valueContext : public antlr4::ParserRuleContext {
   public:
     Initializer_valueContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     Initializer_keyContext *initializer_key();
     Initializer_expressionContext *initializer_expression();
-    Conditional_expressionContext *conditional_expression();
+    Initializer_value_expressionContext *initializer_value_expression();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -874,6 +894,11 @@ public:
     LiteralContext *literal();
     Storage_identifierContext *storage_identifier();
     antlr4::tree::TerminalNode *STRING();
+    InoutContext *inout();
+    antlr4::tree::TerminalNode *USE();
+    antlr4::tree::TerminalNode *AS();
+    antlr4::tree::TerminalNode *BOOLEAN();
+    antlr4::tree::TerminalNode *TYPESYSTEM();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;

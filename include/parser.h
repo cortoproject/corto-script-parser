@@ -6,13 +6,13 @@
 #ifndef CORTO_SCRIPT_PARSER_H
 #define CORTO_SCRIPT_PARSER_H
 
-#include <antlr4/cpp/cpp.h>
+#include "bake_config.h"
 
-#include <corto/script/parser/CortoLexer.h>
-#include <corto/script/parser/CortoParser.h>
-#include <corto/script/parser/CortoListener.h>
-#include <corto/script/parser/CortoBaseListener.h>
-#include <corto/script/parser/CortoVisitor.h>
-#include <corto/script/parser/CortoBaseVisitor.h>
+#include "CortoLexer.h"
+#include "CortoParser.h"
+#include "CortoListener.h"
+#include "CortoBaseListener.h"
+#include "CortoVisitor.h"
+#include "CortoBaseVisitor.h"
 
 #endif

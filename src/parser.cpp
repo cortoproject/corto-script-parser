@@ -1,6 +1,6 @@
 /* This is a managed file. Do not delete this comment. */
 
-#include <corto/script/parser/parser.h>
+#include <corto.script.parser>
 
 #include "antlr4-runtime.h"
 #include "CortoLexer.h"
