@@ -1,22 +1,24 @@
 {
-    "id": "corto/script/parser",
+    "id": "corto.script.parser",
     "type": "package",
     "value": {
-        "description": "Making the world a better place",
-        "author": "Arthur Dent",
+        "description": "Cortoscript parser",
+        "author": "Sander Mertens",
         "version": "1.0.0",
-        "language": "c",
-        "c4cpp": true,
-        "managed": false,
-        "keep_binary": true,
+        "language": "c++",
+        "keep-binary": true,
+        "use": ["antlr4.cpp"]
+    },
+    "lang.cpp": {
         "${os linux}": {
-            "static_artefact": true
+            "static": true
         },
-        "use": ["antlr4/cpp"],
-        "include": ["${locate include}"],
-        "dependee": {
+        "include": ["${locate include}"]
+    },
+    "dependee": {
+        "lang.$${language}": {
             "${os linux}": {
-                "static_lib": ["corto_script_parser"]
+                "static-lib": ["corto_script_parser"]
             }
         }
     }

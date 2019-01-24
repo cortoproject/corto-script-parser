@@ -107,6 +107,8 @@ public:
 
     virtual antlrcpp::Any visitInitializer_list(CortoParser::Initializer_listContext *context) = 0;
 
+    virtual antlrcpp::Any visitInitializer_value_expression(CortoParser::Initializer_value_expressionContext *context) = 0;
+
     virtual antlrcpp::Any visitInitializer_value(CortoParser::Initializer_valueContext *context) = 0;
 
     virtual antlrcpp::Any visitInitializer_key(CortoParser::Initializer_keyContext *context) = 0;

@@ -146,6 +146,9 @@ public:
   virtual void enterInitializer_list(CortoParser::Initializer_listContext *ctx) = 0;
   virtual void exitInitializer_list(CortoParser::Initializer_listContext *ctx) = 0;
 
+  virtual void enterInitializer_value_expression(CortoParser::Initializer_value_expressionContext *ctx) = 0;
+  virtual void exitInitializer_value_expression(CortoParser::Initializer_value_expressionContext *ctx) = 0;
+
   virtual void enterInitializer_value(CortoParser::Initializer_valueContext *ctx) = 0;
   virtual void exitInitializer_value(CortoParser::Initializer_valueContext *ctx) = 0;
 

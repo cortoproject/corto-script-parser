@@ -191,6 +191,10 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual antlrcpp::Any visitInitializer_value_expression(CortoParser::Initializer_value_expressionContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual antlrcpp::Any visitInitializer_value(CortoParser::Initializer_valueContext *ctx) override {
     return visitChildren(ctx);
   }

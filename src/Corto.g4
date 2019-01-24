@@ -216,16 +216,29 @@ initializer_list
     : initializer_value (',' NL* initializer_value)*
     ;
 
+initializer_value_expression
+    : conditional_expression
+    | inout
+    | USE
+    | AS
+    | TYPESYSTEM
+    ;
+
 initializer_value
-    : initializer_key ':' (initializer_expression | conditional_expression)
+    : initializer_key ':' (initializer_expression | initializer_value_expression)
     | initializer_expression
-    | conditional_expression
+    | initializer_value_expression
     ;
 
 initializer_key
     : literal
     | storage_identifier
     | STRING
+    | inout
+    | USE
+    | AS
+    | BOOLEAN
+    | TYPESYSTEM
     ;
 
 literal
