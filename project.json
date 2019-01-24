@@ -6,7 +6,7 @@
         "author": "Sander Mertens",
         "version": "1.0.0",
         "language": "c++",
-        "keep-artefact": true,
+        "keep-binary": true,
         "use": ["antlr4.cpp"]
     },
     "lang.cpp": {
